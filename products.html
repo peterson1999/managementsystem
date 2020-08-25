@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+  </head>
+  <body>
+    <nav>
+      Logo
+      <button>Home</button>
+      <button>Customers</button>
+      <button>Products</button>
+    </nav>
+    <div>
+      <h1>Add a Product</h1>
+      <div>
+        <form>
+          <label for="category">Choose a category:</label>
+          <select id="category" name="category">
+            <option>Category 1</option>
+            <option>Category 2</option>
+            <option>Category 3</option>
+          </select>
+          <br />
+          <label for="productName">Product Name:</label>
+          <input type="text" placeholder="Name" id="productName" />
+          <br />
+          <label for="brand">Brand:</label>
+          <input type="text" placeholder="Brand" id="brand" />
+          <br />
+          <label for="color">Color:</label>
+          <input type="text" placeholder="Color" id="color" />
+          <br />
+          <label for="size">Size:</label>
+          <input type="number" placeholder="Size" id="size" />
+          <br />
+          <label for="price">Price:</label>
+          <input type="number" placeholder="Price" id="price" />
+          <br />
+          <label for="qty">No. of Stocks:</label>
+          <input type="number" placeholder="Number of Stocks" id="qty" />
+          <br />
+          <label for="image">Select image/s to upload:</label>
+          <input type="file" id="image" name="filename" multiple />
+          <br />
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
