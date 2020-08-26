@@ -1,0 +1,127 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+Body {  
+  font-family: Calibri, Helvetica, sans-serif;  
+  /* background-color: pink;   */
+}  
+button {   
+       /* background-color: #4CAF50;    */
+       width: 100%;  
+        /* color: orange;    */
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+    border: 3px solid #f1f1f1;
+    width: 50%;
+    align-self: center;
+    margin: auto; 
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        /* border: 2px solid green;    */
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        /* background-color: lightblue;   */
+    }   
+</style>   
+</head>    
+<body>    
+    <center> <h1>Employee Registration </h1> </center>   
+    <form>  
+        <div class="container"> 
+            <h1>Educational Background</h1>
+
+
+            <h2>Elementary</h2>  
+            <label>School: </label>   
+            <input type="text" placeholder="School name" name="elemschool" required>
+            <label>Grade: </label>   
+            <input type="number" placeholder="Enter Grade" name="elemgrade" required><br>
+            <label>Year Completed: </label>   
+            <input type="number" min="0" max="6" name="elemyear" required><br>
+            <label>Awards: </label>   
+            <textarea name="elemawards" rows="4" cols="40" required></textarea><br>
+
+
+            <h2>Junior High School</h2>  
+            <label>School: </label>   
+            <input type="text" placeholder="School Name" name="JHSname" required>
+            <label>Grade: </label>   
+            <input type="number" placeholder="Enter Grade" name="jhsgrade" required><br>
+            <label>Year Completed: </label>   
+            <input type="number" min="0" max="6" name="jhsyear" required><br>
+            <label>Awards: </label>   
+            <textarea name="jhsawards" rows="4" cols="40" required></textarea><br>
+
+
+            <h2>Senior High School</h2>  
+            <label>School: </label>   
+            <input type="text" placeholder="School Name" name="shsschool" required>
+            <label>Grade: </label>   
+            <input type="number" placeholder="Enter Grade" name="shsgrade" required><br>
+            <label>Year Completed: </label>   
+            <input type="number" min="0" max="6" name="shsyear" required><br>
+            <label>Awards: </label>   
+            <textarea name="shsawards" rows="4" cols="40" required></textarea><br>
+            <label>Strand: </label> <br>  
+            <input type="radio" id="stem" name="strand" value="stem">
+            <label for="stem">STEM</label><br>
+            <input type="radio" id="abm" name="strand" value="abm">
+            <label for="abm">ABM</label><br>
+            <input type="radio" id="gas" name="strand" value="gas">
+            <label for="gas">GAS</label><br>
+
+
+
+            <h2>College</h2>  
+            <label>School: </label>   
+            <input type="text" placeholder="School Name" name="collegename" required>
+            <label>Course: </label>   
+            <input type="text" placeholder="Course" name="collegecourse" required>
+            <label>Level: </label>   
+            <input type="number" placeholder="Enter Highest Year Level" name="collegelevel" required><br>
+            <label>Year Completed: </label>   
+            <input type="number" min="0" max="6" name="collegeyear" required><br>
+            <label>Awards: </label>   
+            <textarea name="collegeawards" rows="4" cols="40" required></textarea><br>
+
+            <h2>Post Graduate</h2>  
+            <label>School: </label>   
+            <input type="text" placeholder="School Name" name="pgname" required>
+            <label>Course: </label>   
+            <input type="text" placeholder="Course" name="pgcourse" required>
+            <label>Level: </label>   
+            <input type="number" placeholder="Enter Highest Year Level" name="pglevel" required><br>
+            <label>Year Completed: </label>   
+            <input type="number" min="0" max="6" name="pgyear" required><br>
+            <label>Awards: </label>   
+            <textarea name="pgawards" rows="4" cols="40" required></textarea><br>
+            <button type="submit">Next</button>  
+            
+
+        </div>   
+    </form>     
+</body>     
+</html>  

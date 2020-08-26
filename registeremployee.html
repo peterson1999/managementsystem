@@ -1,0 +1,111 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+Body {  
+  font-family: Calibri, Helvetica, sans-serif;  
+  /* background-color: pink;   */
+}  
+button {   
+       /* background-color: #4CAF50;    */
+       width: 100%;  
+        /* color: orange;    */
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+    border: 3px solid #f1f1f1;
+    width: 50%;
+    align-self: center;
+    margin: auto; 
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        /* border: 2px solid green;    */
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        /* background-color: lightblue;   */
+    }   
+</style>   
+</head>    
+<body>    
+    <center> <h1>Employee Registration </h1> </center>   
+    <form>  
+        <div class="container"> 
+            <h1>Personal Information</h1>  
+            <label>Full Name: </label>   
+            <input type="text" placeholder="First Name" name="firstname" required>
+            <input type="text" placeholder="Middle Name" name="middlename" required>
+            <input type="text" placeholder="Last Name" name="lastname" required>  
+            <label>Address : </label>   
+            <input type="text" placeholder=" Street, Brgy, City, Prov, Zip" name="address" required>  
+            <label>Birthdate : </label>   
+            <input type="date"  name="bdate" required><br> 
+            <label>Marital Status: </label> <br>  
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br>
+            <label>Gender: </label><br>   
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label> <br>
+            <label>Spouse's Name: </label>   
+            <input type="text" placeholder="First Name" name="sfirstname" required>
+            <input type="text" placeholder="Middle Name" name="smiddlename" required>
+            <input type="text" placeholder="Last Name" name="slastname" required>    
+            <label>Spouse's Occupation: </label>   
+            <input type="text" placeholder="Occupation" name="soccupation" required>
+            <label>Number of Children: </label>   
+            <input type="number" placeholder="Enter a number" name="children" required><br>
+            <label>Mother's Name: </label>   
+            <input type="text" placeholder="First Name" name="mfirstname" required>
+            <input type="text" placeholder="Middle Name" name="mmiddlename" required>
+            <input type="text" placeholder="Last Name" name="mlastname" required>    
+            <label>Mother's Occupation: </label>   
+            <input type="text" placeholder="Occupation" name="moccupation" required>
+            <label>Father's Name: </label>   
+            <input type="text" placeholder="First Name" name="ffirstname" required>
+            <input type="text" placeholder="Middle Name" name="fmiddlename" required>
+            <input type="text" placeholder="Last Name" name="flastname" required>    
+            <label>Father's Occupation: </label>   
+            <input type="text" placeholder="Occupation" name="foccupation" required>
+            <label>Height: </label>  
+            <input type="number" placeholder="Enter your height in cm" name="height" required><br>
+            <label>Weight: </label>   
+            <input type="number" placeholder="Enter your weight in kg" name="weight" required><br>
+            <label>Religion: </label>   
+            <input type="text" placeholder="Religion" name="religion" >
+            <input type="reset">
+            <button type="submit">Next</button>   
+            <!-- <input type="checkbox" checked="checked"> Remember me   
+            <button type="button" class="cancelbtn"> Cancel</button>   
+            Forgot <a href="#"> password? </a>    -->
+        </div>   
+    </form>     
+</body>     
+</html>  
