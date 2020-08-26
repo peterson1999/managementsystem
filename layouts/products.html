@@ -4,48 +4,103 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products</title>
+
+    <link
+      rel="stylesheet"
+      href="../bootstrap-4.5.2-dist/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <nav>
-      Logo
-      <button>Home</button>
-      <button>Customers</button>
-      <button>Products</button>
-    </nav>
-    <div>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+    >
+      <h5 class="mr-md-auto">Logo</h5>
+      <nav class="">
+        <a class="p-2 text-dark" href="#">Home</a>
+        <a class="p-2 text-dark" href="#">Customers</a>
+        <a class="p-2 text-dark" href="#">Products</a>
+      </nav>
+    </div>
+    <div class="text-center">
       <h1>Add a Product</h1>
-      <div>
-        <form>
-          <label for="category">Choose a category:</label>
-          <select id="category" name="category">
-            <option>Category 1</option>
-            <option>Category 2</option>
-            <option>Category 3</option>
-          </select>
-          <br />
-          <label for="productName">Product Name:</label>
-          <input type="text" placeholder="Name" id="productName" />
-          <br />
-          <label for="brand">Brand:</label>
-          <input type="text" placeholder="Brand" id="brand" />
-          <br />
-          <label for="color">Color:</label>
-          <input type="text" placeholder="Color" id="color" />
-          <br />
-          <label for="size">Size:</label>
-          <input type="number" placeholder="Size" id="size" />
-          <br />
-          <label for="price">Price:</label>
-          <input type="number" placeholder="Price" id="price" />
-          <br />
-          <label for="qty">No. of Stocks:</label>
-          <input type="number" placeholder="Number of Stocks" id="qty" />
-          <br />
-          <label for="image">Select image/s to upload:</label>
-          <input type="file" id="image" name="filename" multiple />
-          <br />
-          <input type="submit" />
-        </form>
+      <div class="container">
+        <div class="col-12 col-md-6 mx-auto pt-2 text-left">
+          <form>
+            <div class="form-group">
+              <label for="category">Choose a category:</label>
+              <select class="form-control" id="category" name="category">
+                <option>Category 1</option>
+                <option>Category 2</option>
+                <option>Category 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productName">Product Name:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Name"
+                id="productName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="brand">Brand:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Brand"
+                id="brand"
+              />
+            </div>
+            <div class="form-group">
+              <label for="color">Color:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Color"
+                id="color"
+              />
+            </div>
+            <div class="form-group">
+              <label for="size">Size:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Size"
+                id="size"
+              />
+            </div>
+            <div class="form-group">
+              <label for="price">Price:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Price"
+                id="price"
+              />
+            </div>
+            <div class="form-group">
+              <label for="qty">No. of Stocks:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Number of Stocks"
+                id="qty"
+              />
+            </div>
+            <div class="form-group">
+              <label for="image">Select image/s to upload:</label>
+              <input
+                class="form-control-file"
+                type="file"
+                id="image"
+                name="filename"
+                multiple
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Me Up</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>
