@@ -1,0 +1,7 @@
+.navContainer {
+  background-color: #dd2a3b;
+}
+.navContainer.scrolled {
+  background-color: transparent !important;
+  transition: background-color 200ms linear;
+}

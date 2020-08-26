@@ -7,18 +7,30 @@
 
     <link
       rel="stylesheet"
-      href="../bootstrap-4.5.2-dist/css/bootstrap.min.css"
+      href="../dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="../css/home.css">
+    <script src="../dependencies/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="../dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        $(document).scroll(function () {
+          var $nav = $(".navContainer");
+          $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+      });
+    </script>
   </head>
   <body>
     <div
-      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+      class="d-flex flex-column flex-md-row align-items-center fixed-top p-3 px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
     >
       <h5 class="mr-md-auto">Logo</h5>
       <nav class="">
-        <a class="p-2 text-dark" href="#">Home</a>
-        <a class="p-2 text-dark" href="#">Customers</a>
-        <a class="p-2 text-dark" href="#">Products</a>
+        <a class="p-2 text-white" href="#">Home</a>
+        <a class="p-2 text-white" href="#">Customers</a>
+        <a class="p-2 text-white" href="#">Products</a>
       </nav>
     </div>
     <main>
@@ -78,5 +90,6 @@
         </div>
       </div>
     </main>
+    <div style="height: 1000px;"></div>
   </body>
 </html>
