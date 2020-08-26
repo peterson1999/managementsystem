@@ -4,64 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+
+    <link
+      rel="stylesheet"
+      href="../bootstrap-4.5.2-dist/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <nav>
-      Logo
-      <button>Home</button>
-      <button>Customers</button>
-      <button>Products</button>
-    </nav>
-    <div>
-      <h1 style="text-align: center">Extra Content Here</h1>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+    >
+      <h5 class="mr-md-auto">Logo</h5>
+      <nav class="">
+        <a class="p-2 text-dark" href="#">Home</a>
+        <a class="p-2 text-dark" href="#">Customers</a>
+        <a class="p-2 text-dark" href="#">Products</a>
+      </nav>
     </div>
-    <div>
-      <h1 style="text-align: center">Customer Report Summary</h1>
-      <table style="text-align: center; margin-left: auto; margin-right: auto">
-        <thead>
-          <tr>
-            <td>Date Registered</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Date of Birth</td>
-            <td>Address</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jan 1, 1900</td>
-            <td>John</td>
-            <td>Doe</td>
-            <td>Jan 1, 1835</td>
-            <td>Cebu City</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h1 style="text-align: center">Product Report Summary</h1>
-      <table style="text-align: center; margin-left: auto; margin-right: auto">
-        <thead>
-          <tr>
-            <td>Date Registered</td>
-            <td>Category</td>
-            <td>Brand</td>
-            <td>Name</td>
-            <td>Price</td>
-            <td>No. of Items</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jan 1, 1900</td>
-            <td>Footwear</td>
-            <td>Nike</td>
-            <td>Rubber Shoes</td>
-            <td>5000.00</td>
-            <td>5 pcs</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <main>
+      <div>
+        <h1 class="text-center">Extra Content Here</h1>
+      </div>
+      <div>
+        <h2 class="text-center">Customer Report Summary</h1>
+        <div class="table-responsive">
+          <table class="table table-hover text-center mx-auto">
+            <thead>
+              <tr>
+                <td>Date Registered</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Date of Birth</td>
+                <td>Address</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>Jan 1, 1835</td>
+                <td>Cebu City</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-center">Product Report Summary</h1>
+        <div class="table-responsive">
+          <table class="table table-hover text-center mx-auto">
+            <thead>
+              <tr>
+                <td>Date Registered</td>
+                <td>Category</td>
+                <td>Brand</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>No. of Items</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
