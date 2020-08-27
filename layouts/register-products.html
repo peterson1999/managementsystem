@@ -9,17 +9,26 @@
       rel="stylesheet"
       href="../dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css"
     />
+
     <link rel="stylesheet" href="../css/register-products.css" />
+
+    <script src="../dependencies/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="../dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+
+    <script src="../js/imageUpload.js"></script>
   </head>
   <body>
     <!-- Navigation bar -->
     <div
-      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
+      class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
       role="navigation"
     >
       <nav class="navbar navbar-expand-lg navbar-dark container">
         <div class="col-10 col-lg-8">
-          <a class="mr-auto navbar-brand"><b>Logo</b></a>
+          <a class="mr-auto p-0 navbar-brand">
+            <img class="navLogoAlt" src="../resources/JunJun alt.png" />
+          </a>
         </div>
         <div class="col-2 col-lg">
           <button
@@ -55,11 +64,11 @@
     </div>
     <!-- /Navigation Bar -->
     <!-- Registration -->
-    <div class="text-center">
-      <h1>Add a Product</h1>
+    <div class="my-5 text-center">
+      <h1 class="mb-5">Add a Product</h1>
       <div class="container">
         <div class="col-12 col-md-6 mx-auto pt-2 text-left">
-          <form>
+          <form runat="server">
             <div class="form-group">
               <label for="category">Choose a category:</label>
               <select class="form-control" id="category" name="category">
@@ -123,16 +132,24 @@
               />
             </div>
             <div class="form-group">
-              <label for="image">Select image/s to upload:</label>
+              <label for="image">Select image/s (Max. 3 images):</label>
               <input
                 class="form-control-file"
                 type="file"
-                id="image"
+                id="imageInput"
                 name="filename"
                 multiple
               />
+              <div class="imgValidation" style="display: none; color: #dd2a3b">
+                Only max of 3 images allowed.
+              </div>
+              <img id="imagePreview" src="#" alt="" />
             </div>
-            <button type="submit" class="btn btn-primary">Sign Me Up</button>
+            <div class="m-5 text-center">
+              <button type="submit" class="btn btn-danger">
+                <b>Add New Product!</b>
+              </button>
+            </div>
           </form>
         </div>
       </div>
