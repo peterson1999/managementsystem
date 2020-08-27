@@ -2,16 +2,36 @@
 <html>   
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+
+<link
+  rel="stylesheet"
+  href="../dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css"
+
+/>
+<script src="../dependencies/jquery-3.5.1.min.js"></script>
+<script>
+   $(document).ready(function(){
+
+    $(".datepicker").datepicker();
+
+});
+</script>
+<link rel="stylesheet" href="../css/home.css" />
 <title> Login Page </title>  
-<style>   
+<style> 
+#mainbody{
+     padding-top: 155px;;
+}  
 Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  /* background-color: pink;   */
+  font-family: Calibri, Helvetica, sans-serif; 
+  background-color: #f9f9f9; 
 }  
 button {   
        /* background-color: #4CAF50;    */
-       width: 100%;  
-        /* color: orange;    */
+       width: 100%;
         padding: 15px;   
         margin: 10px 0px;   
         border: none;   
@@ -40,72 +60,209 @@ button {
         margin: 10px 5px;  
     }   
         
-     
- .container {   
-        padding: 25px;   
-        /* background-color: lightblue;   */
-    }   
 </style>   
 </head>    
 <body>    
-    <center> <h1>Employee Registration </h1> </center>   
+    <!-- Navigation bar -->
+    <div
+      class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
+      role="navigation"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <div class="col-10 col-lg-8">
+          <a class="mr-auto p-0 navbar-brand">
+            <img class="navLogoAlt" src="../resources/JunJun alt.png" />
+          </a>
+        </div>
+        <div class="col-2 col-lg">
+          <button
+            class="custom-toggler navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="custom-toggler navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="col-2 col-lg-4">
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- /Navigation Bar -->
+<div id="mainbody">
+    <center><h1>Employee Registration </h1></center>
     <form>  
         <div class="container"> 
             <h1>Personal Information</h1>  
-            <label>Full Name: </label>   
-            <input type="text" placeholder="First Name" name="firstname" required>
-            <input type="text" placeholder="Middle Name" name="middlename" required>
-            <input type="text" placeholder="Last Name" name="lastname" required>  
-            <label>Address : </label>   
-            <input type="text" placeholder=" Street, Brgy, City, Prov, Zip" name="address" required>  
-            <label>Birthdate : </label>   
-            <input type="date"  name="bdate" required><br> 
-            <label>Marital Status: </label> <br>  
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br>
-            <label>Gender: </label><br>   
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label> <br>
-            <label>Spouse's Name: </label>   
-            <input type="text" placeholder="First Name" name="sfirstname" required>
-            <input type="text" placeholder="Middle Name" name="smiddlename" required>
-            <input type="text" placeholder="Last Name" name="slastname" required>    
-            <label>Spouse's Occupation: </label>   
-            <input type="text" placeholder="Occupation" name="soccupation" required>
-            <label>Number of Children: </label>   
-            <input type="number" placeholder="Enter a number" name="children" required><br>
-            <label>Mother's Name: </label>   
-            <input type="text" placeholder="First Name" name="mfirstname" required>
-            <input type="text" placeholder="Middle Name" name="mmiddlename" required>
-            <input type="text" placeholder="Last Name" name="mlastname" required>    
-            <label>Mother's Occupation: </label>   
-            <input type="text" placeholder="Occupation" name="moccupation" required>
-            <label>Father's Name: </label>   
-            <input type="text" placeholder="First Name" name="ffirstname" required>
-            <input type="text" placeholder="Middle Name" name="fmiddlename" required>
-            <input type="text" placeholder="Last Name" name="flastname" required>    
-            <label>Father's Occupation: </label>   
-            <input type="text" placeholder="Occupation" name="foccupation" required>
-            <label>Height: </label>  
-            <input type="number" placeholder="Enter your height in cm" name="height" required><br>
-            <label>Weight: </label>   
-            <input type="number" placeholder="Enter your weight in kg" name="weight" required><br>
-            <label>Religion: </label>   
-            <input type="text" placeholder="Religion" name="religion" >
-            <input type="reset">
-            <button type="submit">Next</button>   
+            <div class="form-row">
+                <label for="inputAddress">Full Name</label>
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Middle name">
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">Province</label>
+                  <input type="text" class="form-control" id="inputZip">
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Marital Status</label>
+              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                <option selected>Choose...</option>
+                <option value="1">Married</option>
+                <option value="2">Single</option>
+                <option value="3">Divorced</option>
+              </select>
+            
+            
+              <fieldset class="form-group row">
+                <label class=" col-sm-2">Gender</label>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                      Female
+                    </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                      Other
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+              <label for="inputAddress">Spouse's Name</label>
+              <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="First name">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name">
+                  </div>
+                  <div class="col">
+                      <input type="text" class="form-control" placeholder="Middle name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Spouse's Occupation</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  </div>
+                  <div class="form-group ">
+                    <label for="inputAddress">Number of Children</label>
+                    
+                      <input class="form-control" type="number" value="0" id="example-number-input">
+                   </div>
+                      <label for="inputAddress">Mother's Name</label>
+                      <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                          </div>
+                          <div class="col">
+                              <input type="text" class="form-control" placeholder="Middle name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Mother's Occupation</label>
+                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                            <label for="inputAddress">Father's Name</label>
+                            <div class="row">
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="First name">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="Last name">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Middle name">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="inputAddress2">Father's Occupation</label>
+                                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="inputAddress">Height</label>
+                                    
+                                      <input class="form-control" type="number" value="0" id="example-number-input">
+                                   </div>
+                                   <div class="form-group ">
+                                    <label for="inputAddress">Weight</label>
+                                    
+                                      <input class="form-control" type="number" value="0" id="example-number-input">
+                                   </div>
+                                   <div class="form-group">
+                                    <label for="inputAddress2">Religion</label>
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                  </div>
+                  <button type="submit">Next</button>  
+            </div>
+            
+            
             <!-- <input type="checkbox" checked="checked"> Remember me   
             <button type="button" class="cancelbtn"> Cancel</button>   
             Forgot <a href="#"> password? </a>    -->
         </div>   
     </form>     
+</div>
+
 </body>     
 </html>  
