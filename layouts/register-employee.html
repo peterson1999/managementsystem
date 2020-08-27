@@ -26,13 +26,12 @@
      padding-top: 155px;;
 }  
 Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  /* background-color: pink;   */
+  font-family: Calibri, Helvetica, sans-serif; 
+  background-color: #f9f9f9; 
 }  
 button {   
        /* background-color: #4CAF50;    */
-       width: 100%;  
-        /* color: orange;    */
+       width: 100%;
         padding: 15px;   
         margin: 10px 0px;   
         border: none;   
@@ -61,54 +60,53 @@ button {
         margin: 10px 5px;  
     }   
         
-     
- .container {   
-        padding: 25px;   
-        /* background-color: lightblue;   */
-    }   
 </style>   
 </head>    
 <body>    
+    <!-- Navigation bar -->
     <div
-    class="d-flex flex-column flex-md-row align-items-center fixed-top p-3 px-md-4 border-bottom shadow-sm text-white navContainer"
-    role="navigation"
-  >
-  <nav class="navbar navbar-expand-lg navbar-dark container">
-    <div class="col-10 col-lg-8">
-      <a class="mr-auto navbar-brand"><b>Logo</b></a>
+      class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
+      role="navigation"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <div class="col-10 col-lg-8">
+          <a class="mr-auto p-0 navbar-brand">
+            <img class="navLogoAlt" src="../resources/JunJun alt.png" />
+          </a>
+        </div>
+        <div class="col-2 col-lg">
+          <button
+            class="custom-toggler navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="custom-toggler navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="col-2 col-lg-4">
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-    <div class="col-2 col-lg">
-      <button
-        class="custom-toggler navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarToggler"
-        aria-controls="navbarToggler"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="custom-toggler navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <div class="col-2 col-lg-4">
-      <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Customers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Products</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
+    <!-- /Navigation Bar -->
 <div id="mainbody">
     <center><h1>Employee Registration </h1></center>
     <form>  
