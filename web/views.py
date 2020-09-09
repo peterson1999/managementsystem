@@ -6,37 +6,17 @@ from django.views.generic import View
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'layouts/index.html')
+        return render(request, 'index.html')
 
     def post(self, request):
-        return render(request, 'layouts/login.html')
+        return render(request, 'login.html')
 
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'layouts/login.html')
+        return render(request, 'login.html')
 
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'layouts/home.html')
-
-
-class RegisterView(View):
-    def get(self, request):
-        return render(request, 'layouts/register-employee.html')
-
-
-class ProductRegisterView(View):
-    def get(self, request):
-        return render(request, 'layouts/register-product.html')
-
-
-class EducationalBgView(View):
-    def get(self, request):
-        return render(request, 'layouts/educationalbg.html')
-
-
-class TrainingView(View):
-    def get(self, request):
-        return render(request, 'layouts/training.html')
+        return render(request, 'home.html')
