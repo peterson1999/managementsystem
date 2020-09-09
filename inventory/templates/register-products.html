@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static '/dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static '/css/register-products.css' %}" />
+
+    <script src="{% static '/dependencies/jquery-3.5.1.min.js' %}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="{% static '/dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static '/js/imageUpload.js' %}"></script>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <div
+      class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
+      role="navigation"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <div class="col-10 col-lg-8">
+          <a class="mr-auto p-0 navbar-brand">
+            <img
+              class="navLogoAlt"
+              src="{% static '/resources/JunJun alt.png' %}"
+            />
+          </a>
+        </div>
+        <div class="col-2 col-lg">
+          <button
+            class="custom-toggler navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="custom-toggler navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="col-2 col-lg-4">
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../layouts/home.html"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../layouts/register-employee.html"
+                  >Customers</a
+                >
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="../layouts/register-products.html"
+                  >Products</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- /Navigation Bar -->
+    <!-- Registration -->
+    <div class="my-5 text-center">
+      <h1 class="mb-5">Add a Product</h1>
+      <div class="container">
+        <div class="col-12 col-md-6 mx-auto pt-2 text-left">
+          <form method="POST" runat="server">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="category">Choose a category:</label>
+              <select class="form-control" id="category" name="category">
+                <option>Category 1</option>
+                <option>Category 2</option>
+                <option>Category 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productName">Product Name:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Name"
+                id="productName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="brand">Brand:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Brand"
+                id="brand"
+              />
+            </div>
+            <div class="form-group">
+              <label for="color">Color:</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Color"
+                id="color"
+              />
+            </div>
+            <div class="form-group">
+              <label for="size">Size:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Size"
+                id="size"
+              />
+            </div>
+            <div class="form-group">
+              <label for="price">Price:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Price"
+                id="price"
+              />
+            </div>
+            <div class="form-group">
+              <label for="qty">No. of Stocks:</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Number of Stocks"
+                id="qty"
+              />
+            </div>
+            <div class="form-group">
+              <label for="image">Select image/s (Max. 3 images):</label>
+              <input
+                class="form-control-file"
+                type="file"
+                id="imageInput"
+                name="filename"
+                multiple
+              />
+              <div class="imgValidation" style="display: none; color: #dd2a3b">
+                Only max of 3 images allowed.
+              </div>
+              <img id="imagePreview" src="#" alt="" />
+            </div>
+            <div class="m-5 text-center">
+              <button type="submit" class="btn btn-danger">
+                <b>Add New Product!</b>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /Registration -->
+  </body>
+</html>
