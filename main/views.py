@@ -16,6 +16,9 @@ class LoginView(View):
     def get(self, request):
         return render(request, 'login.html')
 
+    def post(self, request):
+        return render(request, 'home.html')
+
 
 class HomeView(View):
     def get(self, request):

@@ -8,17 +8,21 @@ class RegisterView(View):
     def get(self, request):
         return render(request, 'register-employee.html')
 
-
-class ProductRegisterView(View):
-    def get(self, request):
-        return render(request, 'register-product.html')
+    def post(self, request):
+        return render(request, 'educationalbg.html')
 
 
 class EducationalBgView(View):
     def get(self, request):
         return render(request, 'educationalbg.html')
 
+    def post(self, request):
+        return render(request, 'training.html')
+
 
 class TrainingView(View):
     def get(self, request):
         return render(request, 'training.html')
+
+    def post(self, request):
+        return render(request, 'home.html')

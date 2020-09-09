@@ -6,3 +6,6 @@ from django.views.generic import View
 class ProductRegisterView(View):
     def get(self, request):
         return render(request, 'register-products.html')
+
+    def post(self, request):
+        return render(request, 'home.html')

@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'web'
 urlpatterns = [
-    path('product-register', views.ProductRegisterView.as_view(),
-         name="product_register_view"),
+    path('register-products', views.ProductRegisterView.as_view(),
+         name="register_products_view"),
 ]
