@@ -1,6 +1,13 @@
 body {
   background-color: #f9f9f9;
 }
+.button1, .addemployee{
+  
+  border-radius: 8px;
+  color: #f8f9fa;
+  background-color: #dd2a3b;
+  border: solid;
+}
 .navLogo {
   display: none;
   height: 60px;

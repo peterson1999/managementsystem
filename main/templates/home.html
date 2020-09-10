@@ -78,6 +78,12 @@
       <div class="pt-5">
         <h1 class="text-center">Welcome Back!</h1>
       </div>
+      <div class="container pt-5"> 
+        <form id= "form1" action ="" method = "POST"  autocomplete="off" enctype = "multipart/form-data">
+          {% csrf_token %}
+            <p ><button type="submit" class="button button1 addemployee">ADD EMPLOYEE</button></p>
+        </form>
+      </div>
       <div class="container pt-5">
         <h3>Inventory Summary</h3>
         <div class="row">
