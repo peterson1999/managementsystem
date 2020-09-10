@@ -288,32 +288,31 @@ h6 {
 .close:hover {
   color: #df3740;
 }
-.about-content {
-  text-align: justify;
+.contact-us h3{
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
 }
-.about-content ul {
-  list-style: none;
-  padding: 0;
+.contact-us p {
+  font-size: 14px;
+  line-height: 24px;
 }
-
-.about-content ul li {
-  padding: 10px 0 0 28px;
-  position: relative;
-}
-
-.about-content ul i {
-  left: 0;
-  top: 7px;
-  position: absolute;
-  font-size: 20px;
-  color: #d9232d;
-}
-
-.about-content p:last-child {
-  margin-bottom: 0;
+.contact-us .social-links{
   text-align: center;
 }
-
+.social-links a {
+  font-size: 18px;
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+.social-links a:hover {
+  color: #556270;
+  text-decoration: none;
+}
 /*--------------------------------------------------------------
 # Sections
 --------------------------------------------------------------*/
@@ -364,23 +363,40 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about .content{
-  justify-content: center;
-}
 .about .content h2 {
   font-weight: 700;
   font-size: 48px;
   line-height: 60px;
   margin-bottom: 20px;
   text-transform: uppercase;
-  text-align: center;
 }
 
 .about .content h3 {
   font-weight: 500;
   line-height: 32px;
   font-size: 24px;
-  text-align: center;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding: 10px 0 0 28px;
+  position: relative;
+}
+
+.about .content ul i {
+  left: 0;
+  top: 7px;
+  position: absolute;
+  font-size: 20px;
+  color: #d9232d;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
 }
 
 @-webkit-keyframes animate-loading {
@@ -413,11 +429,11 @@ section {
 
 #footer .footer-top {
   background: #515d6a;
-  padding: 60px 0 30px 0;
+  padding: 40px 0 10px 0;
 }
 
 #footer .footer-top .footer-info {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #footer .footer-top .footer-info h3 {
@@ -466,7 +482,7 @@ section {
 }
 
 #footer .footer-top .footer-links {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #footer .footer-top .footer-links ul {
@@ -501,35 +517,6 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   color: white;
-}
-
-#footer .footer-top .footer-newsletter form {
-  margin-top: 30px;
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 4px;
-}
-
-#footer .footer-top .footer-newsletter form input[type="email"] {
-  border: 0;
-  padding: 4px;
-  width: calc(100% - 110px);
-}
-
-#footer .footer-top .footer-newsletter form input[type="submit"] {
-  position: absolute;
-  top: 0;
-  right: -2px;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 20px 2px 20px;
-  background: #d9232d;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 0 4px 4px 0;
 }
 
 #footer .copyright {
