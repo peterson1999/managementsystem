@@ -11,11 +11,13 @@
       href="{% static '/dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css' %}"
     />
     <link rel="stylesheet" href = "{% static 'dependencies/MDB-Free_4.19.1/css/addons/datatables.min.css' %}">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{% static '/css/home.css' %}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
 
     <script src="{% static '/dependencies/jquery-3.5.1.min.js' %}"></script>
+
     <script src="{% static '/dependencies/MDB-Free_4.19.1/js/addons/datatables.min.js' %}"></script>
     <script src ="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -24,6 +26,10 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="{% static '/dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js' %}"></script>
+    <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 
     <script src="{% static '/js/navbarScroll.js' %}"></script>
     <script src="{% static '/js/imageUpload.js' %}"></script>
@@ -271,6 +277,10 @@
           </div>
         </div>
         <div class="col-12 mx-auto table-responsive card-body px-2 pt-0 pb-1">
+          <p id="date_filter">
+            <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
+            <span id="date-label-to" class="date-label">To:<input class="date_range_filter date" type="text" id="datepicker_to" />
+          </p>
           <table id="dtBasicExample" class="table table-hover table-striped text-center mx-auto">
             <thead>
               <tr>
@@ -284,6 +294,123 @@
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
+              <tr>
+                <td>Jan 1, 1900</td>
+                <td>Footwear</td>
+                <td>Nike</td>
+                <td>Rubber Shoes</td>
+                <td>5000.00</td>
+                <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
+              </tr>
               <tr>
                 <td>Jan 1, 1900</td>
                 <td>Footwear</td>

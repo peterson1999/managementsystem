@@ -2,6 +2,22 @@ body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   background-color: #f9f9f9;
 }
+.ui-datepicker-trigger img{
+  width: 21px;
+}
+.dt-buttons > .dt-button {
+  background: #DD2A3B;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+.dt-buttons > .dt-button:hover{
+  background:white;
+    border-radius: 5px;
+    color: #DD2A3B;
+    
+    border: #DD2A3B;
+}
 .navLogo {
   display: none;
   height: 60px;
