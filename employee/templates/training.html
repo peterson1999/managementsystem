@@ -18,47 +18,8 @@
       });
     </script>
     <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/register-employee.css' %}" />
     <title>Login Page</title>
-    <style>
-      #mainbody {
-        margin-bottom: 50px;
-      }
-      Body {
-        font-family: Calibri, Helvetica, sans-serif;
-        background-color: #f9f9f9;
-      }
-      button {
-        /* background-color: #4CAF50;    */
-        width: 100%;
-        padding: 15px;
-        margin: 10px 0px;
-        border: none;
-        cursor: pointer;
-      }
-      form {
-        border: 3px solid #f1f1f1;
-        width: 50%;
-        align-self: center;
-        margin: auto;
-      }
-      input[type="text"],
-      input[type="password"] {
-        width: 100%;
-        margin: 8px 0;
-        padding: 12px 20px;
-        display: inline-block;
-        /* border: 2px solid green;    */
-        box-sizing: border-box;
-      }
-      button:hover {
-        opacity: 0.7;
-      }
-      .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        margin: 10px 5px;
-      }
-    </style>
   </head>
   <body>
     <!-- Navigation bar -->
@@ -92,17 +53,15 @@
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="../layouts/home.html"
+                <a class="nav-link" href="/main/home"
                   >Home <span class="sr-only">(current)</span></a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../layouts/register-employee.html"
-                  >Register</a
-                >
+                <a class="nav-link" href="/employee/register">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../layouts/register-products.html"
+                <a class="nav-link" href="/inventory/register-products"
                   >Products</a
                 >
               </li>
@@ -117,7 +76,7 @@
       <form method="POST">
         {% csrf_token %}
         <div class="container p-3">
-          <h1>Training</h1>
+          <h2>Training</h2>
           <div class="container">
             <div class="form-group">
               <label for="inputAddress">Title</label>
