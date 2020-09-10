@@ -157,6 +157,7 @@
                 <td><b>Last Name</b></td>
                 <td><b>Date of Birth</b></td>
                 <td><b>Address</b></td>
+                <td><b>Actions</b></td>
               </tr>
             </thead>
             <tbody>
@@ -166,6 +167,7 @@
                 <td>Doe</td>
                 <td>Jan 1, 1835</td>
                 <td>Cebu City</td>
+                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
               </tr>
               <tr>
                 <td>Jan 1, 1900</td>
@@ -173,6 +175,7 @@
                 <td>Doe</td>
                 <td>Jan 1, 1835</td>
                 <td>Cebu City</td>
+                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
               </tr>
               <tr>
                 <td>Jan 1, 1900</td>
@@ -180,21 +183,90 @@
                 <td>Doe</td>
                 <td>Jan 1, 1835</td>
                 <td>Cebu City</td>
+                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
+
+      <!-- Customer Summary Modals -->
+      <div class="modal fade" id="customerView" tabindex="-1" role="dialog" aria-labelledby="customerViewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header action-modal">
+              <h5 class="modal-title" id="customerViewTitle">Customer Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body container px-4">
+              <div class="row">
+                <div class="col-4">
+                  <p><b>Date Registered:</b></p>
+                  <p><b>First Name:</b></p>
+                  <p><b>Last Name:</b></p>
+                  <p><b>Date of Birth:</b></p>
+                  <p><b>Address:</b></p>
+                </div>
+                <div class="col-8">
+                  <p>Jan 1, 1900</p>
+                  <p>John</p>
+                  <p>Doe</p>
+                  <p>Jan 1, 1835</p>
+                  <p>Cebu City</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="customerDelete" tabindex="-1" role="dialog" aria-labelledby="customerDeleteTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body container px-4">
+              <h5>Are you sure you want to delete?</h5>
+              <div class="row pt-4">
+                <div class="col-4">
+                  <p><b>Date Registered:</b></p>
+                  <p><b>First Name:</b></p>
+                  <p><b>Last Name:</b></p>
+                  <p><b>Date of Birth:</b></p>
+                  <p><b>Address:</b></p>
+                </div>
+                <div class="col-8">
+                  <p>Jan 1, 1900</p>
+                  <p>John</p>
+                  <p>Doe</p>
+                  <p>Jan 1, 1835</p>
+                  <p>Cebu City</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Customer Summary Modals -->
+
+
       <div class="container card shadow-lg bg-white rounded px-0 my-5">
         <div class="card-header">
           <div class="row">
             <h4 class="text-left col-11 align-self-center">Product Report</h4>
             <div class="col-1 p-0">
-              <a href="#" data-toggle="modal" data-target="#addProducts"
-                ><img
-                  class="add-products-icon"
-                  src="{% static '/resources/ic_plus.svg' %}"
-              /></a>
+              <a href="#" data-toggle="modal" data-target="#addProducts">
+                <img class="add-products-icon" src="{% static '/resources/ic_plus.svg' %}"/>
+              </a>
             </div>
           </div>
         </div>
@@ -208,6 +280,7 @@
                 <td><b>Name</b></td>
                 <td><b>Price</b></td>
                 <td><b>No. of Items</b></td>
+                <td><b>Actions</b></td>
               </tr>
             </thead>
             <tbody>
@@ -218,6 +291,7 @@
                 <td>Rubber Shoes</td>
                 <td>5000.00</td>
                 <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
               </tr>
               <tr>
                 <td>Jan 1, 1900</td>
@@ -226,6 +300,7 @@
                 <td>Rubber Shoes</td>
                 <td>5000.00</td>
                 <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
               </tr>
               <tr>
                 <td>Jan 1, 1900</td>
@@ -234,13 +309,14 @@
                 <td>Rubber Shoes</td>
                 <td>5000.00</td>
                 <td>5 pcs</td>
+                <td><a href="#" data-toggle="modal" data-target="#productView">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete">Delete</a></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- Modal -->
+      <!-- Product Summary Modals -->
       <div
         class="modal fade"
         id="addProducts"
@@ -360,7 +436,77 @@
           </div>
         </div>
       </div>
-      <!-- /Modal -->
+
+      <!--Actions Modals-->
+      <div class="modal fade" id="productView" tabindex="-1" role="dialog" aria-labelledby="productViewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header action-modal">
+              <h5 class="modal-title" id="productViewTitle">Product Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body container px-4">
+              <div class="row">
+                <div class="col-4">
+                  <p><b>Date Registered:</b></p>
+                  <p><b>Category:</b></p>
+                  <p><b>Brand:</b></p>
+                  <p><b>Name:</b></p>
+                  <p><b>Price:</b></p>
+                  <p><b>No. of Items</b></p>
+                </div>
+                <div class="col-8">
+                  <p>Jan 1, 1900</p>
+                  <p>Footwear</p>
+                  <p>Nike</p>
+                  <p>Rubber Shoes</p>
+                  <p>5000.00</p>
+                  <p>5 pcs</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="productDelete" tabindex="-1" role="dialog" aria-labelledby="productDeleteTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body container px-4">
+              <h5>Are you sure you want to delete?</h5>
+              <div class="row pt-4">
+                <div class="col-4">
+                  <p><b>Date Registered:</b></p>
+                  <p><b>Category:</b></p>
+                  <p><b>Brand:</b></p>
+                  <p><b>Name:</b></p>
+                  <p><b>Price:</b></p>
+                  <p><b>No. of Items</b></p>
+                </div>
+                <div class="col-8">
+                  <p>Jan 1, 1900</p>
+                  <p>Footwear</p>
+                  <p>Nike</p>
+                  <p>Rubber Shoes</p>
+                  <p>5000.00</p>
+                  <p>5 pcs</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Product Summary Modals -->
     </main>
     <!-- /Main Content -->
   </body>
