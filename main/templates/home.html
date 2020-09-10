@@ -77,9 +77,9 @@
         <h1 class="text-center">Welcome Back!</h1>
       </div>
       <div class="container pt-5"> 
-        <form id= "form1" action ="" method = "POST"  autocomplete="off" enctype = "multipart/form-data">
+        <form id= "form1" method = "POST"  autocomplete="off" enctype = "multipart/form-data">
           {% csrf_token %}
-            <p ><button type="submit" class="button button1 addemployee">ADD EMPLOYEE</button></p>
+          <button type="submit" class="btn btn-danger">ADD EMPLOYEE</button>
         </form>
       </div>
       <div class="container pt-5">
