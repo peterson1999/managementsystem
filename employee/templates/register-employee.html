@@ -70,7 +70,7 @@
     <!-- /Navigation Bar -->
     <div id="mainbody">
       <center><h1>Employee Registration</h1></center>
-      <form method="POST" runat="server" enctype="multipart/form-data">
+      <form method="POST" runat="server">
         {% csrf_token %}
         <div class="row">
           <div class="col-12 block mt-3 mb-5">
@@ -229,7 +229,7 @@
               <input type="text" class="form-control" id="religion" placeholder="Religion" name="religion" />
             </div>
             <div class="row px-2">
-              <button class="btn-danger" type="submit" >Next</button>
+              <button class="btn-danger" type="button" onclick="next()" >Next</button>
             </div>
           </div>
         </div>
