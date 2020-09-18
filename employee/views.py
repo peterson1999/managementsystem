@@ -14,21 +14,21 @@ class RegisterView(View):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             name = request.POST.get(
-                "fName") + request.POST.get("mName") + request.POST.get("lName")
+                "name") + " " + request.POST.get("mName") + " " + request.POST.get("lName")
             address = request.POST.get("address1") + " " + request.POST.get("address2") + " " + request.POST.get(
                 "city") + ", " + request.POST.get("province") + ", " + request.POST.get("zip")
             birthdate = request.POST.get("birthDate")
             marStatus = request.POST.get("marStatus")
             gender = request.POST.get("gender")
-            spouseName = request.POST.get(
-                "spouseFName") + request.POST.get("spouseMName") + request.POST.get("spouseLName")
+            spouseName = request.POST.get("spouseFName") + " " + request.POST.get(
+                "spouseMName") + " " + request.POST.get("spouseLName")
             spouseOcc = request.POST.get("spouseOcc")
             numOfChildren = request.POST.get("numOfChildren")
-            motherName = request.POST.get(
-                "motherFName") + request.POST.get("motherMName") + request.POST.get("motherLName")
+            motherName = request.POST.get("motherFName") + " " + request.POST.get(
+                "motherMName") + " " + request.POST.get("motherLName")
             motherOcc = request.POST.get("motherOcc")
-            fatherName = request.POST.get(
-                "fatherFName") + request.POST.get("fatherMName") + request.POST.get("fatherLName")
+            fatherName = request.POST.get("fatherFName") + " " + request.POST.get(
+                "fatherMName") + " " + request.POST.get("fatherLName")
             fatherOcc = request.POST.get("fatherOcc")
             height = request.POST.get("height")
             weight = request.POST.get("weight")
@@ -39,9 +39,7 @@ class RegisterView(View):
             return HttpResponse('Successfully Registered!')
         else:
             print(form.errors)
-            print(form.files)
-            print(form.is_valid())
-            return HttpResponse('not valid')
+            return HttpResponse("Not Valid!")
 
 
 class EducationalBgView(View):

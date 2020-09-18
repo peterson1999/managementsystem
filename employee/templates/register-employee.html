@@ -92,10 +92,10 @@
               <label for="inputAddress">Full Name</label>
               <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="First name" name="fName" required/>
+                  <input type="text" class="form-control" placeholder="First name" name="name" required/>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Last name" name="lName" />
+                  <input type="text" class="form-control" placeholder="Last name" name="lName" required/>
                 </div>
                 <div class="col">
                   <input type="text" class="form-control" placeholder="Middle name" name="mName" />
@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
               <label for="inputAddress">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address1" />
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address1" required/>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Address 2</label>
@@ -113,31 +113,32 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" name="city" />
+                <input type="text" class="form-control" id="inputCity" name="city" required/>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Province</label>
-                <input type="text" class="form-control" id="inputZip" name="province" />
+                <input type="text" class="form-control" id="inputZip" name="province" required/>
               </div>
               <div class="form-group col-md-2">
                 <label for="inputZip">Zip</label>
-                <input type="number" class="form-control" id="inputZip" name="zip" />
+                <input type="number" class="form-control" id="inputZip" name="zip" required/>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputBirthDate" class="col-2 col-form-label">Birth Date</label>
               <div class="col-10">
-                <input class="form-control" type="date" value="2011-08-19" id="inputBirthDate" name="birthDate" />
+                <input class="form-control" type="date" value="2011-08-19" id="inputBirthDate" name="birthDate" required/>
               </div>
             </div>
             <label class="mr-sm-2" for="inlineFormCustomSelect" >
               Marital Status
             </label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="marStatus">
-              <option selected>Choose...</option>
-              <option value="1">Married</option>
-              <option value="2">Single</option>
-              <option value="3">Divorced</option>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="marStatus" required>
+              <option selected value="">Choose...</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Separated">Separated</option>
+              <option value="Divorced">Divorced</option>
             </select>
 
             <fieldset class="form-group row">
@@ -166,7 +167,7 @@
             <label for="spouseName">Spouse's Name</label>
             <div class="row" id="spouseName">
               <div class="col">
-                <input type="text" class="form-control" placeholder="First name" name="spouseFName" />
+                <input type="text" class="form-control" placeholder="First name" name="spouseFName" required/>
               </div>
               <div class="col">
                 <input type="text" class="form-control" placeholder="Last name" name="spouseLName" />
