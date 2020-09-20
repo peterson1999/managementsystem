@@ -74,7 +74,7 @@
       <h1 class="mb-5">Add a Product</h1>
       <div class="container">
         <div class="col-12 col-md-6 mx-auto pt-2 text-left">
-          <form method="POST" runat="server">
+          <form method="POST" runat="server" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
               <label for="category">Choose a category:</label>
@@ -148,7 +148,7 @@
                 class="form-control-file"
                 type="file"
                 id="imageInput"
-                name="filename"
+                name="image"
                 multiple
               />
               <div class="imgValidation" style="display: none; color: #dd2a3b">
