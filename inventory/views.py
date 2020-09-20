@@ -16,13 +16,14 @@ class ProductRegisterView(View):
         form = ProductForm(request.POST)
 
         if form.is_valid():
+            
             category = request.POST.get("category")
             brand = request.POST.get("brand")
             name = request.POST.get("name")
             price = request.POST.get("price")
             stock = request.POST.get("stock")
-        
-            form = Product(category = category, brand=brand,name=name, price=price,stock=stock)
+            image = request.FILES["image"]
+            form = Product(category = category, brand=brand,name=name, price=price,stock=stock, image=image)
             form.save()
             return HttpResponse ('Product Saved!')
 
