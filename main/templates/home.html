@@ -343,38 +343,24 @@
               </tr>
             </thead>
             <tbody>
+              {% for customer in customers %}
               <tr>
-                <td>Jan 1, 1900</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Jan 1, 1835</td>
-                <td>Cebu City</td>
-                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
+                <td>{{customer.regdate}}</td>
+                <td>{{customer.fName}}</td>
+                <td>{{customer.lName}}</td>
+                <td>{{customer.birthdate}}</td>
+                <td>{{customer.address}}</td>
+                <td><a href="#" data-toggle="modal" data-target="#customerView-{{customer.id}}">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete-{{customer.id}}">Delete</a></td>
               </tr>
-              <tr>
-                <td>Jan 1, 1900</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Jan 1, 1835</td>
-                <td>Cebu City</td>
-                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
-              </tr>
-              <tr>
-                <td>Jan 1, 1900</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Jan 1, 1835</td>
-                <td>Cebu City</td>
-                <td><a href="#" data-toggle="modal" data-target="#customerView">View</a> | <a href="#" data-toggle="modal" data-target="#customerDelete">Delete</a></td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
 
-
+      {% for customer in customers %}
       <!-- Customer Summary Modals -->
-      <div class="modal fade" id="customerView" tabindex="-1" role="dialog" aria-labelledby="customerViewTitle" aria-hidden="true">
+      <div class="modal fade" id="customerView-{{customer.id}}" tabindex="-1" role="dialog" aria-labelledby="customerViewTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header action-modal">
@@ -393,11 +379,11 @@
                   <p><b>Address:</b></p>
                 </div>
                 <div class="col-8">
-                  <p>Jan 1, 1900</p>
-                  <p>John</p>
-                  <p>Doe</p>
-                  <p>Jan 1, 1835</p>
-                  <p>Cebu City</p>
+                  <input type="text" class="mb-2 w-100" value="{{customer.regdate}}" disabled/>
+                  <input type="text" class="mb-2 w-100" value="{{customer.fName}}"/>
+                  <input type="text" class="mb-2 w-100" value="{{customer.lName}}"/>
+                  <input type="text" class="mb-2 w-100" value="{{customer.birthdate}}"/>
+                  <input type="text" class="mb-2 w-100" value="{{customer.address}}"/>
                 </div>
               </div>
             </div>
@@ -409,7 +395,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id="customerDelete" tabindex="-1" role="dialog" aria-labelledby="customerDeleteTitle" aria-hidden="true">
+      <div class="modal fade" id="customerDelete-{{customer.id}}" tabindex="-1" role="dialog" aria-labelledby="customerDeleteTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-body container px-4">
@@ -423,11 +409,11 @@
                   <p><b>Address:</b></p>
                 </div>
                 <div class="col-8">
-                  <p>Jan 1, 1900</p>
-                  <p>John</p>
-                  <p>Doe</p>
-                  <p>Jan 1, 1835</p>
-                  <p>Cebu City</p>
+                  <p>{{customer.regdate}}</p>
+                  <p>{{customer.fName}}</p>
+                  <p>{{customer.lName}}</p>
+                  <p>{{customer.birthdate}}</p>
+                  <p>{{customer.address}}</p>
                 </div>
               </div>
             </div>
@@ -439,7 +425,7 @@
         </div>
       </div>
       <!-- /Customer Summary Modals -->
-
+      {% endfor %}
 
       <div class="container card shadow-lg bg-white rounded px-0 my-5">
         <div class="card-header">
