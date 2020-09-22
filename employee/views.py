@@ -15,9 +15,11 @@ class RegisterView(View):
         if form.is_valid():
             name = request.POST.get(
                 "name") + " " + request.POST.get("mName") + " " + request.POST.get("lName")
+            email = request.POST.get("email")
+            password = request.POST.get("password")
             address = request.POST.get("address1") + " " + request.POST.get("address2") + " " + request.POST.get(
                 "city") + ", " + request.POST.get("province") + ", " + request.POST.get("zip")
-            birthdate = request.POST.get("birthDate")
+            birthdate = request.POST.get("birthdate")
             marStatus = request.POST.get("marStatus")
             gender = request.POST.get("gender")
             spouseName = request.POST.get("spouseFName") + " " + request.POST.get(
@@ -33,7 +35,7 @@ class RegisterView(View):
             height = request.POST.get("height")
             weight = request.POST.get("weight")
             religion = request.POST.get("religion")
-            form = Employee(name=name, address=address, birthdate=birthdate, maritalStatus=marStatus, gender=gender, spouseName=spouseName, spouseOcc=spouseOcc,
+            form = Employee(name=name, address=address, birthdate=birthdate, email=email, password=password, maritalStatus=marStatus, gender=gender, spouseName=spouseName, spouseOcc=spouseOcc,
                             numberOfChildren=numOfChildren, motherName=motherName, motherOcc=motherOcc, fatherName=fatherName, fatherOcc=fatherOcc, height=height, weight=weight, religion=religion)
             form.save()
             return HttpResponse('Successfully Registered!')

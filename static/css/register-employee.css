@@ -19,7 +19,8 @@ form {
   margin: auto;
 }
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   width: 100%;
   margin: 8px 0;
   padding: 12px 20px;
@@ -37,9 +38,6 @@ button:hover {
 
 .wrapper-progressBar {
   width: 100%
-}
-
-.progressBar {
 }
 
 .progressBar li {
@@ -89,4 +87,30 @@ button:hover {
 
 .progressBar .active:after {
   background-color: #dd2a3b;
+}
+
+#registerForm label.error {
+  color: #dd2a3b !important;
+}
+#registerForm input.formError{
+  border-color: #dd2a3b;
+}
+#registerForm select.formError{
+  border-color: #dd2a3b;
+}
+
+@media only screen and (max-width: 992px){
+  form{
+    width: auto;
+  }
+}
+@media only screen and (min-width:993px){
+  form{
+    width: 75%;
+  }
+}
+@media only screen and (min-width:1132px){
+  form{
+    width: 50%;
+  }
 }
