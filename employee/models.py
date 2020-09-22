@@ -4,7 +4,9 @@ from django.utils import timezone
 
 
 class Person(models.Model):
-    name = models.CharField(max_length=50)
+    fName = models.CharField(max_length=50)
+    lName = models.CharField(max_length=50)
+    mName = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     birthdate = models.DateField()
 
