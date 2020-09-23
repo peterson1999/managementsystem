@@ -1,22 +1,26 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 # Create your models here.
 
 
 class Person(models.Model):
-    name = models.CharField(max_length=50)
+    fName = models.CharField(max_length=50)
+    lName = models.CharField(max_length=50)
+    mName = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     birthdate = models.DateField()
 
 
 class Customer(Person):
-    regdate = models.DateField(default=datetime.now())
+    regdate = models.DateField(default=timezone.now)
 
     class Meta:
         db_table = "Customer"
 
 
 class Employee(Person):
+    email = models.EmailField()
+    password = models.CharField(max_length=50)
     maritalStatus = models.CharField(max_length=10)
     gender = models.CharField(max_length=10)
     spouseName = models.CharField(max_length=50)
