@@ -17,7 +17,7 @@ class Product (models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField(max_length=11)
     stock = models.IntegerField()
-    image = models.ImageField(upload_to='images/', default=None)
+    image = models.ImageField(upload_to='static/images/', default=None)
     # supplier = models.ForeignKey(Supplier, null=False,blank= False, on_delete =  models.CASCADE, related_name="Supplier", default= 1)
 
 
