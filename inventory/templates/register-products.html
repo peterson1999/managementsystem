@@ -19,38 +19,17 @@
 
     <script src="{% static '/js/imageUpload.js' %}"></script>
     <script>
-    function validateForm() {
-  var x = document.forms["myForm"]["name"].value;
-  var y = document.forms["myForm"]["brand"].value;
-  var z = document.forms["myForm"]["price"].value;
-  var a = document.forms["myForm"]["stock"].value;
- // var b = document.forms["myForm"]["image"].value;
- var b = document.getElementById("imagePreview").src ;
-  if (x == "") {
-    alert("Name must be filled out");
+function validateForm() {
+  var x = document.forms["myForm"]["price"].value;
+  var y = document.forms["myForm"]["stock"].value;
+  if (x < 0) {
+    alert("Price must not be less than 0");
     return false;
   }
-    if (y == "") {
-    alert("Brand must be filled out");
+  if (y < 0) {
+    alert("Stock must not be less than 0");
     return false;
   }
-    if (z < 0) {
-    alert("Price must not be negative");
-    return false;
-  }
-    if (a < 0) {
-    alert("Stock must not be negative"）;
-    return false;
-
-  } 
-
-  if（b.includes("#")){
-    alert("Please choose an image");
-    return false;
-  }
-
-   
-
 }
 </script>
   </head>
@@ -87,16 +66,14 @@
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="/main/home"
-                  >Home <span class="sr-only">(current)</span></a
-                >
+                  >Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/employee/register">Customers</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/inventory/register-products"
-                  >Products</a
-                >
+                  >Products</a>
               </li>
             </ul>
           </div>
@@ -127,6 +104,8 @@
                 name="name"
                 placeholder="Name"
                 id="productName"
+                maxlength="50"
+                required
               />
             </div>
             <div class="form-group">
@@ -137,6 +116,8 @@
                 type="text"
                 placeholder="Brand"
                 id="brand"
+                maxlength="50"
+                required
               />
             </div>
       
@@ -148,6 +129,8 @@
                 name="price"
                 placeholder="Price"
                 id="price"
+                min="0"
+                required
               />
             </div>
             <div class="form-group">
@@ -158,6 +141,8 @@
                 name="stock"
                 placeholder="Number of Stocks"
                 id="qty"
+                min="0"
+                required
               />
             </div>
             <div class="form-group">
@@ -167,11 +152,12 @@
                 type="file"
                 id="imageInput"
                 name="image"
-                multiple
+                {% comment %} multiple {% endcomment %}
+                required
               />
-              <div class="imgValidation" style="display: none; color: #dd2a3b">
+              {% comment %} <div class="imgValidation" style="display: none; color: #dd2a3b">
                 Only max of 3 images allowed.
-              </div>
+              </div> {% endcomment %}
               <img id="imagePreview" src="#" alt="" />
             </div>
             <div class="m-5 text-center">
