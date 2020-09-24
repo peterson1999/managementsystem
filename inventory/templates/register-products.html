@@ -18,6 +18,41 @@
     <script src="{% static '/dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js' %}"></script>
 
     <script src="{% static '/js/imageUpload.js' %}"></script>
+    <script>
+    function validateForm() {
+  var x = document.forms["myForm"]["name"].value;
+  var y = document.forms["myForm"]["brand"].value;
+  var z = document.forms["myForm"]["price"].value;
+  var a = document.forms["myForm"]["stock"].value;
+ // var b = document.forms["myForm"]["image"].value;
+ var b = document.getElementById("imagePreview").src ;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+    if (y == "") {
+    alert("Brand must be filled out");
+    return false;
+  }
+    if (z < 0) {
+    alert("Price must not be negative");
+    return false;
+  }
+    if (a < 0) {
+    alert("Stock must not be negative"）;
+    return false;
+
+  } 
+
+  if（b.includes("#")){
+    alert("Please choose an image");
+    return false;
+  }
+
+   
+
+}
+</script>
   </head>
   <body>
     <!-- Navigation bar -->
@@ -74,7 +109,7 @@
       <h1 class="mb-5">Add a Product</h1>
       <div class="container">
         <div class="col-12 col-md-6 mx-auto pt-2 text-left">
-          <form method="POST" runat="server" enctype="multipart/form-data">
+          <form method="POST" runat="server" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
             {% csrf_token %}
             <div class="form-group">
               <label for="category">Choose a category:</label>
@@ -104,24 +139,7 @@
                 id="brand"
               />
             </div>
-            <div class="form-group">
-              <label for="color">Color:</label>
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Color"
-                id="color"
-              />
-            </div>
-            <div class="form-group">
-              <label for="size">Size:</label>
-              <input
-                class="form-control"
-                type="number"
-                placeholder="Size"
-                id="size"
-              />
-            </div>
+      
             <div class="form-group">
               <label for="price">Price:</label>
               <input
