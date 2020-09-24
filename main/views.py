@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from employee.models import Customer
+from inventory.models import Product
 # Create your views here.
 
 
@@ -23,8 +24,10 @@ class LoginView(View):
 class HomeView(View):
     def get(self, request):
         customers = Customer.objects.all()
+        products = Product.objects.all()
         context = {
-            'customers': customers
+            'customers': customers, 
+            'products': products
         }
         return render(request, 'home.html', context)
 
