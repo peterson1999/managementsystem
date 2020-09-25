@@ -18,6 +18,20 @@
     <script src="{% static '/dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js' %}"></script>
 
     <script src="{% static '/js/imageUpload.js' %}"></script>
+    <script>
+function validateForm() {
+  var x = document.forms["myForm"]["price"].value;
+  var y = document.forms["myForm"]["stock"].value;
+  if (x < 0) {
+    alert("Price must not be less than 0");
+    return false;
+  }
+  if (y < 0) {
+    alert("Stock must not be less than 0");
+    return false;
+  }
+}
+</script>
   </head>
   <body>
     <!-- Navigation bar -->
@@ -52,16 +66,14 @@
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="/main/home"
-                  >Home <span class="sr-only">(current)</span></a
-                >
+                  >Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/employee/register">Customers</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/inventory/register-products"
-                  >Products</a
-                >
+                  >Products</a>
               </li>
             </ul>
           </div>
@@ -74,7 +86,7 @@
       <h1 class="mb-5">Add a Product</h1>
       <div class="container">
         <div class="col-12 col-md-6 mx-auto pt-2 text-left">
-          <form method="POST" runat="server" enctype="multipart/form-data">
+          <form method="POST" runat="server" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
             {% csrf_token %}
             <div class="form-group">
               <label for="category">Choose a category:</label>
@@ -92,6 +104,8 @@
                 name="name"
                 placeholder="Name"
                 id="productName"
+                maxlength="50"
+                required
               />
             </div>
             <div class="form-group">
@@ -102,26 +116,11 @@
                 type="text"
                 placeholder="Brand"
                 id="brand"
+                maxlength="50"
+                required
               />
             </div>
-            <div class="form-group">
-              <label for="color">Color:</label>
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Color"
-                id="color"
-              />
-            </div>
-            <div class="form-group">
-              <label for="size">Size:</label>
-              <input
-                class="form-control"
-                type="number"
-                placeholder="Size"
-                id="size"
-              />
-            </div>
+      
             <div class="form-group">
               <label for="price">Price:</label>
               <input
@@ -130,6 +129,8 @@
                 name="price"
                 placeholder="Price"
                 id="price"
+                min="0"
+                required
               />
             </div>
             <div class="form-group">
@@ -140,6 +141,8 @@
                 name="stock"
                 placeholder="Number of Stocks"
                 id="qty"
+                min="0"
+                required
               />
             </div>
             <div class="form-group">
@@ -149,11 +152,12 @@
                 type="file"
                 id="imageInput"
                 name="image"
-                multiple
+                {% comment %} multiple {% endcomment %}
+                required
               />
-              <div class="imgValidation" style="display: none; color: #dd2a3b">
+              {% comment %} <div class="imgValidation" style="display: none; color: #dd2a3b">
                 Only max of 3 images allowed.
-              </div>
+              </div> {% endcomment %}
               <img id="imagePreview" src="#" alt="" />
             </div>
             <div class="m-5 text-center">
