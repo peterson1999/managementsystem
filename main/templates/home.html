@@ -613,19 +613,19 @@
             <div class="modal-body container px-4">
               <div class="row">
 
-                <div class="col-4">
+                {% comment %} <div class="col-4">
                   <p><b>Image:</b></p>
                   <p><b>Category:</b></p>
                   <p><b>Brand:</b></p>
                   <p><b>Name:</b></p>
                   <p><b>Price:</b></p>
                   <p><b>No. of Items</b></p>
-                </div>
+                </div> {% endcomment %}
                 <div class="col-8">
                  <form method="POST" runat="server" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="row">
-
+                  {% csrf_token %}
+              <div class="row">
+                  <div class = "col-4">Image:</div>
                   <div class="col-2"><img src='/{{product.image}}' height=30px width= 30px>    
                   </div>
                 <div class="col">
@@ -637,24 +637,38 @@
                 multiple
               /></div>
               </div>
-              
-                <input type='text'placeholder='{{product.category}}'> 
-                 <input type='text'placeholder='{{product.brand}}'> 
-                 <input type='text'placeholder='{{product.name}}'> 
+              <div class="row">
+                <div class ="col-4">Category:</div>
+                <input type='text'placeholder='{{product.category}}'>
+              </div> 
+              <div class="row">
+                <div class ="col-4">Name:</div>
+                <input type='text'placeholder='{{product.name}}'>
+              </div> 
+              <div class="row">
+                <div class ="col-4">Brand:</div>
+                <input type='text'placeholder='{{product.brand}}'>
+              </div> 
+              <div class="row">
+                <div class ="col-4">Price:</div>
                   <input
-                class="form-control"
+              
                 type="number"
                 name="stock"
                 placeholder='{{product.price}}'
                 id="qty"
-              />
+                />
+              </div>
+              <div class="row">
+                <div class ="col-4">Stock:</div>
                   <input
-                class="form-control"
+                
                 type="number"
                 name="stock"
                 placeholder='{{product.stock}}'
                 id="qty"
-              />
+                  />
+              </div>
                   </form>
                 </div>
               </div>
@@ -683,23 +697,12 @@
                 </div>
                 <div class="col-8">
                  <p><img src='/{{product.image}}' height=30px width= 30px></p>
-                  <input type='text'placeholder='{{product.category}}'> 
-                 <input type='text'placeholder='{{product.brand}}'> 
-                 <input type='text'placeholder='{{product.name}}'> 
-                  <input
-                class="form-control"
-                type="number"
-                name="stock"
-                placeholder='{{product.price}}'
-                id="qty"
-              />
-                  <input
-                class="form-control"
-                type="number"
-                name="stock"
-                placeholder='{{product.stock}}'
-                id="qty"
-              />
+                  <p>{{product.category}}<p>
+                <p>{{product.name}}<p>
+                <p>{{product.brand}}<p>
+                <p>{{product.price}}<p>
+                <p>{{product.stock}}<p>
+              
                 </div>
               </div>
             </div>
