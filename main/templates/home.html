@@ -549,7 +549,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="addProduct" method="POST">
+            <form id="addProduct" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
               <div class="modal-body">
                 <div class="form-group">
