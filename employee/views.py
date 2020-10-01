@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import Employee, EmployeeForm
 from django.http import HttpResponse
@@ -39,7 +39,7 @@ class RegisterView(View):
             form = Employee(fName=fName, lName=lName, mName=mName, address=address, birthdate=birthdate, email=email, password=password, maritalStatus=marStatus, gender=gender, spouseName=spouseName, spouseOcc=spouseOcc,
                             numberOfChildren=numOfChildren, motherName=motherName, motherOcc=motherOcc, fatherName=fatherName, fatherOcc=fatherOcc, height=height, weight=weight, religion=religion)
             form.save()
-            return HttpResponse('Successfully Registered!')
+            return redirect('main:home_view')
         else:
             print(form.errors)
             return HttpResponse("Not Valid!")

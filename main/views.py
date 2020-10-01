@@ -31,7 +31,7 @@ class HomeView(View):
     def get(self, request):
         customers = Customer.objects.all()
         products = Product.objects.all()
-        images=MultiImage.objects.all()
+        images = MultiImage.objects.all()
         items = products.count()
         enddate = datetime.today()
         startdate = enddate - timedelta(days=6)
@@ -43,7 +43,7 @@ class HomeView(View):
         context = {
             'customers': customers,
             'products': products,
-            'images':images,
+            'images': images,
             'item_summary': items,
             'purchase_summary': purchase,
             'qty_summary': qty,
@@ -83,7 +83,7 @@ class HomeView(View):
                 delete_customer = Customer.objects.filter(
                     person_ptr_id=customer_id).delete()
                 delete_person = Person.objects.filter(id=customer_id).delete()
-            
+
             # Product
             elif 'btnUpdate' in request.POST:
                 print('update profile button clicked')
@@ -96,19 +96,39 @@ class HomeView(View):
                 image = request.FILES.getlist("image")
 
                 update_inventory = Product.objects.get(id=product_id)
-                update_image= MultiImage.objects.filter(product_id_id=product_id)
-                for i  in range(len(update_image)):
-                    update_image1 = MultiImage.objects.get(id=update_image[i].id)
-                    print(update_image1)
-                    update_image1.image =  image[i]
-                    update_image1.save()
+                update_image = MultiImage.objects.filter(
+                    product_id_id=product_id)
+                dbImgCount = len(update_image)
+                imageCount = len(image)
+                if (imageCount > 0):
+                    if (dbImgCount >= imageCount):
+                        for i in range(dbImgCount):
+                            update_image1 = MultiImage.objects.get(
+                                id=update_image[i].id)
+                            try:
+                                update_image1.image = image[i]
+                            except IndexError:
+                                update_image1.image = None
+                            update_image1.save()
+                    else:
+                        for i in range(imageCount):
+                            try:
+                                update_image1 = MultiImage.objects.get(
+                                    id=update_image[i].id)
+                                update_image1.image = image[i]
+                                update_image1.save()
+                            except IndexError:
+                                formImage = MultiImage(
+                                    product_id=update_inventory, image=image[i])
+                                formImage.save()
+
                 update_inventory.category = category
                 update_inventory.brand = brand
                 update_inventory.name = name
                 update_inventory.price = price
                 update_inventory.stock = stock
                 update_inventory.save()
-                
+
                 print(update_inventory)
                 print('profile updated')
             elif 'btnDelete' in request.POST:

@@ -544,12 +544,16 @@
                     <div class="row">
                       <div class = "col-4">Image:</div>
                       <div class="col-2">
-                        {% for  i in images %}
-                          {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                        {% for i in images %}
+                          {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
                         {% endfor %}   
                       </div>
                       <div class="col">
                         <input class="form-control-file" type="file" id="imageInput" name="image" multiple/>
+                        <div class="imgValidation" style="display: none; color: #dd2a3b">
+                          Only max of 3 images allowed.
+                        </div>
+                        <img id="imagePreview" src="#" alt="" />
                       </div>
                     </div>
                     <div class="row">
@@ -604,7 +608,7 @@
                   <div class="col-8">
                     <p> 
                       {% for  i in images %}
-                        {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                        {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
                       {% endfor %}
                     </p>
                     <p>{{product.category}}<p>
