@@ -275,7 +275,7 @@
                   src="{% static '/resources/ic_basket.svg' %}"
                 />
               </div>
-              <h1>3</h1>
+              <h1>{{item_summary}}</h1>
               <p>Items</p>
             </div>
           </div>
@@ -287,7 +287,7 @@
                   src="{% static '/resources/ic_cart.svg' %}"
                 />
               </div>
-              <h1>5</h1>
+              <h1>{{purchase_summary}}</h1>
               <p>Recent Purchases</p>
             </div>
           </div>
@@ -299,7 +299,7 @@
                   src="{% static '/resources/ic_layer.svg' %}"
                 />
               </div>
-              <h1>25</h1>
+              <h1>{{qty_summary.stock__sum}}</h1>
               <p>Total Quantity</p>
             </div>
           </div>
@@ -311,7 +311,7 @@
                   src="{% static '/resources/ic_card.svg' %}"
                 />
               </div>
-              <h1>₱90.0K</h1>
+              <h1>₱{{value_summary.price__sum|floatformat:2}}</h1>
               <p>Total Value</p>
             </div>
           </div>
