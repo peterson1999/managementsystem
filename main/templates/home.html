@@ -603,39 +603,32 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="updateForm" method="POST"  enctype="multipart/form-data">
-            {% csrf_token %}
-              <div class="modal-body container px-4">
-                <div class="row">
-                  <div class="col-8">
-                    <input type="text" name="id" value='{{product.id}}' hidden>
-                    <div class="row">
-                      <div class = "col-4">Image:</div>
-                      <div class="col-2"><img src='/{{product.image}}' height=30px width= 30px>    
-                    </div>
-                    <div class="col">
-                      <input class="form-control-file" type="file" id="imageInput" name="image" multiple/>
-                    </div>
-                    <div class="row">
-                      <div class ="col-4">Category:</div>
-                      <input name="category" type='text'value='{{product.category}}'>
-                    </div> 
-                    <div class="row">
-                      <div class ="col-4">Name:</div>
-                      <input name="name" type='text'  value='{{product.name}}'>
-                    </div> 
-                    <div class="row">
-                      <div class ="col-4">Brand:</div>
-                      <input name="brand" type='text'  value='{{product.brand}}'>
-                    </div> 
-                    <div class="row">
-                      <div class ="col-4">Price:</div>
-                        <input type="number" name="price" value='{{product.price}}' id="qty" />
-                    </div>
-                    <div class="row">
-                      <div class ="col-4">Stock:</div>
-                        <input type="number" name="stock" value='{{product.stock}}' id="qty" />
-                    </div>
+            <div class="modal-body container px-4">
+              <div class="row">
+
+                {% comment %} <div class="col-4">
+                  <p><b>Image:</b></p>
+                  <p><b>Category:</b></p>
+                  <p><b>Brand:</b></p>
+                  <p><b>Name:</b></p>
+                  <p><b>Price:</b></p>
+                  <p><b>No. of Items</b></p>
+                </div> {% endcomment %}
+                <div class="col-8">
+                 <form id="updateForm" method="POST"  enctype="multipart/form-data">
+                  {% csrf_token %}
+                  
+            
+                <input type="text" name="id" value='{{product.id}}' hidden>
+              
+              <div class="row">
+                  <div class = "col-4">Image:</div>
+                  <div class="col-2">
+                    {% for  i in images %}
+                     {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                    {% endfor %}
+
+                          
                   </div>
                 </div>
               </div>
@@ -650,29 +643,33 @@
 
       <div class="modal fade" id="productDelete-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="productDeleteTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <form id="deleteForm" method="POST" >
-          {% csrf_token %} 
-            <input type="text" name="id" value='{{product.id}}' hidden>
-            <div class="modal-content">
-              <div class="modal-body container px-4">
-                <h5>Are you sure you want to delete?</h5>
-                <div class="row pt-4">
-                  <div class="col-4">
-                    <p><b>Image:</b></p>
-                    <p><b>Category:</b></p>
-                    <p><b>Brand:</b></p>
-                    <p><b>Name:</b></p>
-                    <p><b>Price:</b></p>
-                    <p><b>No. of Items</b></p>
-                  </div>
-                  <div class="col-8">
-                    <p><img src='/{{product.image}}' height=30px width= 30px></p>
-                    <p>{{product.category}}<p>
-                    <p>{{product.name}}<p>
-                    <p>{{product.brand}}<p>
-                    <p>{{product.price}}<p>
-                    <p>{{product.stock}}<p>
-                  </div>
+         <form id="deleteForm" method="post" >
+                        {% csrf_token %} 
+                          <input type="text" name="id" value='{{product.id}}' hidden>
+          <div class="modal-content">
+            <div class="modal-body container px-4">
+              <h5>Are you sure you want to delete?</h5>
+              <div class="row pt-4">
+                <div class="col-4">
+                  <p><b>Image:</b></p>
+                  <p><b>Category:</b></p>
+                  <p><b>Brand:</b></p>
+                  <p><b>Name:</b></p>
+                  <p><b>Price:</b></p>
+                  <p><b>No. of Items</b></p>
+                </div>
+                <div class="col-8">
+                <p> 
+                  {% for  i in images %}
+                    {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                  {% endfor %}
+                </p>
+                <p>{{product.category}}<p>
+                <p>{{product.name}}<p>
+                <p>{{product.brand}}<p>
+                <p>{{product.price}}<p>
+                <p>{{product.stock}}<p>
+              
                 </div>
               </div>
               <div class="modal-footer">
