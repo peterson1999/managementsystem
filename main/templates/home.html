@@ -258,12 +258,6 @@
       <div class="pt-5">
         <h1 class="text-center">Welcome Back!</h1>
       </div>
-      {% comment %} <div class="container pt-5"> 
-        <form id= "form1" method = "POST"  autocomplete="off" enctype = "multipart/form-data">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-danger">ADD EMPLOYEE</button>
-        </form>
-      </div> {% endcomment %}
       <div class="container pt-5">
         <h3>Inventory Summary</h3>
         <div class="row">
@@ -366,7 +360,6 @@
       </div>
 
       <!-- Customer Summary Modals -->
-
       <div class="modal fade" id="addCustomers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -381,7 +374,7 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label for="fName">First Name:</label>
-                  <input class="form-control" type="text" placeholder="First Name" name="fName" id="fName" required/>
+                  <input class="form-control" type="text" placeholder="First Name" name="fName" id="fName" maxlength="50" required/>
                 </div>
                 <div class="form-group">
                   <label for="mName">Middle Name:</label>
@@ -389,11 +382,11 @@
                 </div>
                 <div class="form-group">
                   <label for="lName">Last Name:</label>
-                  <input class="form-control" type="text" placeholder="Last Name" name="lName" id="lName" required/>
+                  <input class="form-control" type="text" placeholder="Last Name" name="lName" id="lName" maxlength="50" required/>
                 </div>
                 <div class="form-group">
                   <label for="address">Address:</label>
-                  <input class="form-control" type="text" placeholder="Address" name="address" id="address" required/>
+                  <input class="form-control" type="text" placeholder="Address" name="address" id="address" maxlength="100" required/>
                 </div>
                 <div class="form-group">
                   <label for="birthdate">Birthdate:</label>
@@ -490,14 +483,7 @@
 
       <div class="container card shadow-lg bg-white rounded px-0 my-5">
         <div class="card-header">
-          <div class="row">
-            <h4 class="text-left col-11 align-self-center">Product Report</h4>
-            <div class="col-1 p-0">
-              <a href="#" data-toggle="modal" data-target="#addProducts">
-                <img class="add-products-icon" src="{% static '/resources/ic_plus.svg' %}"/>
-              </a>
-            </div>
-          </div>
+          <h4 class="text-left align-self-center">Product Report</h4>
         </div>
         <div class="col-12 mx-auto table-responsive card-body px-2 pt-0 pb-1">
           <table class="table table-hover table-striped text-center mx-auto" id="pReportTable">
@@ -538,66 +524,6 @@
         </div>
       </div>
 
-      <!-- Product Summary Modals -->
-      
-      <div class="modal fade" id="addProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add a Product</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form id="addProduct" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="category">Choose a category:</label>
-                  <select class="form-control" id="category" name="category">
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="productName">Product Name:</label>
-                  <input class="form-control" type="text" placeholder="Name" id="productName" name="name"/>
-                </div>
-                <div class="form-group">
-                  <label for="brand">Brand:</label>
-                  <input class="form-control" type="text" placeholder="Brand" id="brand" name="brand"/>
-                </div>
-                <div class="form-group">
-                  <label for="price">Price:</label>
-                  <input class="form-control" type="number" placeholder="Price" id="price" name="price"/>
-                </div>
-                <div class="form-group">
-                  <label for="qty">No. of Stocks:</label>
-                  <input class="form-control" type="number" placeholder="Number of Stocks" id="qty" name="stock"/>
-                </div>
-                <div class="form-group">
-                  <label for="image">Select image/s (Max. 3 images):</label>
-                  <input class="form-control-file" type="file" id="imageInput" name="image" multiple />
-                  <div class="imgValidation" style="display: none; color: #dd2a3b">
-                    Only max of 3 images allowed.
-                  </div>
-                  <img id="imagePreview" src="#" alt="" />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-                <button type="submit" id="addProduct" name="addProduct" class="btn btn-danger">
-                  Add New Product
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
       <!--Product Actions Modals-->
       {% for  product in products  %}
       <div class="modal fade" id="productView-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="productViewTitle" aria-hidden="true">
@@ -609,82 +535,54 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body container px-4">
-              <div class="row">
-
-                {% comment %} <div class="col-4">
-                  <p><b>Image:</b></p>
-                  <p><b>Category:</b></p>
-                  <p><b>Brand:</b></p>
-                  <p><b>Name:</b></p>
-                  <p><b>Price:</b></p>
-                  <p><b>No. of Items</b></p>
-                </div> {% endcomment %}
-                <div class="col-8">
-                 <form id="updateForm" method="POST"  enctype="multipart/form-data">
-                  {% csrf_token %}
-                  
-            
-                <input type="text" name="id" value='{{product.id}}' hidden>
-              
-              <div class="row">
-                  <div class = "col-4">Image:</div>
-                  <div class="col-2">
-                    {% for  i in images %}
-                     {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
-                    {% endfor %}
-
-                          
+            <form id="updateForm" method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="modal-body container px-4">
+                <div class="row">
+                  <div class="col-12">
+                    <input type="text" name="id" value='{{product.id}}' hidden>
+                    <div class="row">
+                      <div class = "col-4">Image:</div>
+                      <div class="col-2">
+                        {% for i in images %}
+                          {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                        {% endfor %}   
+                      </div>
+                      <div class="col">
+                        <input class="form-control-file" type="file" id="imageInput" name="image" multiple/>
+                        <div class="imgValidation" style="display: none; color: #dd2a3b">
+                          Only max of 3 images allowed.
+                        </div>
+                        <img id="imagePreview" src="#" alt="" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class ="col-4">Category:</div>
+                      <input name="category" type='text'value='{{product.category}}'>
+                    </div> 
+                    <div class="row">
+                      <div class ="col-4">Name:</div>
+                      <input name="name" type='text'  value='{{product.name}}'>
+                    </div> 
+                    <div class="row">
+                      <div class ="col-4">Brand:</div>
+                      <input name="brand" type='text'  value='{{product.brand}}'>
+                    </div> 
+                    <div class="row">
+                      <div class ="col-4">Price:</div>
+                        <input type="number" name="price" value='{{product.price}}' id="qty" />
+                    </div>
+                    <div class="row">
+                      <div class ="col-4">Stock:</div>
+                        <input type="number" name="stock" value='{{product.stock}}' id="qty" />
+                    </div> 
                   </div>
-                <div class="col">
-                   <input
-                class="form-control-file"
-                type="file"
-                id="imageInput"
-                name="image"
-                multiple
-              /></div>
-              </div>
-              <div class="row">
-                <div class ="col-4">Category:</div>
-                <input name="category" type='text'value='{{product.category}}'>
-              </div> 
-              <div class="row">
-                <div class ="col-4">Name:</div>
-                <input name="name" type='text'  value='{{product.name}}'>
-              </div> 
-              <div class="row">
-                <div class ="col-4">Brand:</div>
-                <input name="brand" type='text'  value='{{product.brand}}'>
-              </div> 
-              <div class="row">
-                <div class ="col-4">Price:</div>
-                  <input
-              
-                type="number"
-                name="price"
-                value='{{product.price}}'
-                id="qty"
-                />
-              </div>
-              <div class="row">
-                <div class ="col-4">Stock:</div>
-                  <input
-                
-                type="number"
-                name="stock"
-                value='{{product.stock}}'
-                id="qty"
-                  />
-              </div>
-                  
                 </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" name="btnUpdate" id="btnUpdate" class="btn btn-primary">Update</button>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="btnUpdate" id="btnUpdate" class="btn btn-primary">Update</button>
+              </div>
             </form>
           </div>
         </div>
@@ -692,41 +590,40 @@
 
       <div class="modal fade" id="productDelete-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="productDeleteTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-         <form id="deleteForm" method="post" >
-                        {% csrf_token %} 
-                          <input type="text" name="id" value='{{product.id}}' hidden>
-          <div class="modal-content">
-            <div class="modal-body container px-4">
-              <h5>Are you sure you want to delete?</h5>
-              <div class="row pt-4">
-                <div class="col-4">
-                  <p><b>Image:</b></p>
-                  <p><b>Category:</b></p>
-                  <p><b>Brand:</b></p>
-                  <p><b>Name:</b></p>
-                  <p><b>Price:</b></p>
-                  <p><b>No. of Items</b></p>
+          <form id="deleteForm" method="post" >
+          {% csrf_token %} 
+            <input type="text" name="id" value='{{product.id}}' hidden>
+            <div class="modal-content">
+              <div class="modal-body container px-4">
+                <h5>Are you sure you want to delete?</h5>
+                <div class="row pt-4">
+                  <div class="col-4">
+                    <p><b>Image:</b></p>
+                    <p><b>Category:</b></p>
+                    <p><b>Brand:</b></p>
+                    <p><b>Name:</b></p>
+                    <p><b>Price:</b></p>
+                    <p><b>No. of Items</b></p>
+                  </div>
+                  <div class="col-8">
+                    <p> 
+                      {% for  i in images %}
+                        {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                      {% endfor %}
+                    </p>
+                    <p>{{product.category}}<p>
+                    <p>{{product.name}}<p>
+                    <p>{{product.brand}}<p>
+                    <p>{{product.price}}<p>
+                    <p>{{product.stock}}<p>
+                  </div>
                 </div>
-                <div class="col-8">
-                <p> 
-                  {% for  i in images %}
-                    {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
-                  {% endfor %}
-                </p>
-                <p>{{product.category}}<p>
-                <p>{{product.name}}<p>
-                <p>{{product.brand}}<p>
-                <p>{{product.price}}<p>
-                <p>{{product.stock}}<p>
-              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" name="btnDelete" class="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" name="btnDelete" class="btn btn-danger">Delete</button>
-            </div>
-          </div>
           </form>
         </div>
       </div>
