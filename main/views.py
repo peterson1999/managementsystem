@@ -101,8 +101,15 @@ class HomeView(View):
                 image = request.FILES["image"]
                 # email = request.POST.get("student-email")
                 # phone = request.POST.get("student-phone")
-                update_inventory = Product.objects.filter(id=product_id).update(
-                    category=category, brand=brand, name=name, price=price, stock=stock, image=image)
+
+                update_inventory = Product.objects.get(id=product_id)
+                update_inventory.category = category
+                update_inventory.brand = brand
+                update_inventory.name = name
+                update_inventory.price = price
+                update_inventory.stock = stock
+                update_inventory.image = image
+                update_inventory.save()
                 print(update_inventory)
                 print('profile updated')
             elif 'btnDelete' in request.POST:
