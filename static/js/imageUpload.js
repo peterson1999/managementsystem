@@ -6,9 +6,11 @@ $(document).ready(function () {
       if (filesLength > 3) {
         $(".imgValidation").css("display", "block");
         $("button[type='submit']#addProduct.btn-danger").prop("disabled", true);
+        $("button[type='submit']#btnUpdate.btn-primary").prop("disabled", true);
       } else {
         $(".imgValidation").css("display", "none");
         $("button[type='submit']#addProduct.btn-danger").prop("disabled", false);
+        $("button[type='submit']#btnUpdate.btn-primary").prop("disabled", false);
         for (var i = 0; i < filesLength; i++) {
           var f = files[i];
           var fileReader = new FileReader();
