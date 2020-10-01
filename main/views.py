@@ -48,7 +48,6 @@ class HomeView(View):
             'purchase_summary': purchase,
             'qty_summary': qty,
             'value_summary': value
-
         }
         return render(request, 'home.html', context)
 
@@ -84,23 +83,8 @@ class HomeView(View):
                 delete_customer = Customer.objects.filter(
                     person_ptr_id=customer_id).delete()
                 delete_person = Person.objects.filter(id=customer_id).delete()
+            
             # Product
-            elif 'addProduct' in request.POST:
-                form = ProductForm(request.POST)
-                if form.is_valid():
-                    category = request.POST.get("category")
-                    brand = request.POST.get("brand")
-                    name = request.POST.get("name")
-                    price = request.POST.get("price")
-                    stock = request.POST.get("stock")
-                    image = request.FILES["image"]
-                    form = Product(category=category, brand=brand,
-                                   name=name, price=price, stock=stock, image=image)
-                    form.save()
-
-                else:
-                    print(form.errors)
-                    return HttpResponse('Error in Adding Product')
             elif 'btnUpdate' in request.POST:
                 print('update profile button clicked')
                 category = request.POST.get("category")
@@ -110,8 +94,6 @@ class HomeView(View):
                 stock = request.POST.get("stock")
                 product_id = request.POST.get("id")
                 image = request.FILES.getlist("image")
-                # email = request.POST.get("student-email")
-                # phone = request.POST.get("student-phone")
 
                 update_inventory = Product.objects.get(id=product_id)
                 update_image= MultiImage.objects.filter(product_id_id=product_id)
@@ -120,13 +102,11 @@ class HomeView(View):
                     print(update_image1)
                     update_image1.image =  image[i]
                     update_image1.save()
-                print(update_image)
                 update_inventory.category = category
                 update_inventory.brand = brand
                 update_inventory.name = name
                 update_inventory.price = price
                 update_inventory.stock = stock
-                # update_inventory.image = image
                 update_inventory.save()
                 
                 print(update_inventory)
