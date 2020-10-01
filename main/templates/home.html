@@ -629,7 +629,12 @@
               
               <div class="row">
                   <div class = "col-4">Image:</div>
-                  <div class="col-2"><img src='/{{product.image}}' height=30px width= 30px>    
+                  <div class="col-2">
+                    {% for  i in images %}
+                     {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                    {% endfor %}
+
+                          
                   </div>
                 <div class="col">
                    <input
@@ -703,8 +708,12 @@
                   <p><b>No. of Items</b></p>
                 </div>
                 <div class="col-8">
-                 <p><img src='/{{product.image}}' height=30px width= 30px></p>
-                  <p>{{product.category}}<p>
+                <p> 
+                  {% for  i in images %}
+                    {% if product.id == i.product_id_id %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                  {% endfor %}
+                </p>
+                <p>{{product.category}}<p>
                 <p>{{product.name}}<p>
                 <p>{{product.brand}}<p>
                 <p>{{product.price}}<p>
