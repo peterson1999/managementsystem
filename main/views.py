@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.http import HttpResponse
+from datetime import datetime, timedelta
+from django.db.models import Sum
 from employee.models import Customer, Person
 from inventory.models import Product
-from django.http import Http404
-from django.shortcuts import render, redirect
-from django.views.generic import View
-from django.http import HttpResponse
 from .models import *
 from .forms import CustomerForm
 from inventory.forms import ProductForm
@@ -32,12 +31,21 @@ class HomeView(View):
     def get(self, request):
         customers = Customer.objects.all()
         products = Product.objects.all()
-        for customer in customers:
-            print(customer.birthdate)
+        items = products.count()
+        enddate = datetime.today()
+        startdate = enddate - timedelta(days=6)
+        purchase = Customer.objects.filter(
+            regdate__range=[startdate, enddate]).count()
+        qty = Product.objects.aggregate(Sum('stock'))
+        value = Product.objects.aggregate(Sum('price'))
 
         context = {
             'customers': customers,
-            'products': products
+            'products': products,
+            'item_summary': items,
+            'purchase_summary': purchase,
+            'qty_summary': qty,
+            'value_summary': value
         }
         return render(request, 'home.html', context)
 
