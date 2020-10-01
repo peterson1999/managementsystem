@@ -10,8 +10,12 @@ class Person(models.Model):
     address = models.CharField(max_length=100)
     birthdate = models.DateField()
 
+    class Meta:
+        db_table = "Person"
+
 
 class Customer(Person):
+    customer_id = models.AutoField(primary_key=True)
     regdate = models.DateField(default=timezone.now)
 
     class Meta:
