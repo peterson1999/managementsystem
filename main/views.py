@@ -107,8 +107,6 @@ class HomeView(View):
                 stock = request.POST.get("stock")
                 product_id = request.POST.get("id")
                 image = request.FILES["image"]
-                # email = request.POST.get("student-email")
-                # phone = request.POST.get("student-phone")
 
                 update_inventory = Product.objects.get(id=product_id)
                 update_inventory.category = category
