@@ -127,9 +127,11 @@ function validateForm() {
                 class="form-control"
                 type="number"
                 name="price"
+                pattern='[0-9]+(\\.[0-9][0-9]?)?'
                 placeholder="Price"
                 id="price"
                 min="0"
+                step="any"
                 required
               />
             </div>
