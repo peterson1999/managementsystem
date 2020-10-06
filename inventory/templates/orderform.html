@@ -20,22 +20,22 @@
     <script src="{% static '/js/imageUpload.js' %}"></script>
     <script>
     function myFunction(g,f) {
-  for (i=g;i< (g+f);i++){
-  console.log(g+f);
-  var k = parseFloat(i);
-  var x1 = "qty-"+k;
-  var y1 = "price-"+k;
-  var z = "total-"+k;
-  var x = document.getElementById(x1).value
-  var a = x;
-  var y=  document.getElementById(y1).innerHTML;
-  var b = parseFloat(y);
+    for (i=g;i< (g+f);i++){
+    console.log(g+f);
+    var k = parseFloat(i);
+    var x1 = "qty-"+k;
+    var y1 = "price-"+k;
+    var z = "total-"+k;
+    var x = document.getElementById(x1).value
+    var a = x;
+    var y=  document.getElementById(y1).innerHTML;
+    var b = parseFloat(y);
 
-  var n = a * b;
-  document.getElementById(z).innerHTML = n;
+    var n = a * b;
+    document.getElementById(z).innerHTML = n;
+    }
   }
-}
-</script>
+  </script>
   </head>
   <body>
     <!-- Navigation bar -->
@@ -101,75 +101,42 @@
               </select>
             </div>
             <div class="form-group">
-              {% comment %} <label for="category">Choose Products:</label>
-               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                     Default checkbox
-                  </label>
-                  <br>
-                  <label for="qty">No. of Pcs.:</label> {% endcomment %}
-                  <table class="table">
-    <thead>
-      
-          <label>Choose Products:</label>
-        
-    </thead>
-    <tbody>
-      {% for  product in products  %}
-          <tr>
-        <td>{% for  i in images %}
-                        {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
-                      {% endfor %} </td>
-        <td>{{product.name}}</td>
-        <td>Quantity</td>
-        <td>
-          <input type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" onchange="myFunction({{products.0.id}},{{products.count}})" min=0>  
-        </td>
-        <td>Price/pc:</td>
-        <td id="price-{{product.id}}">{{product.price}}</td>
-         <td >Total:</td>
-        <td id= "total-{{product.id}}">
-          0
-        </td>
-      </tr>
-      {% endfor %}
-      {% comment %} <tr>
-        <td>Product 1</td>
-        <td>Quantity</td>
-        <td>
-          <input type="number" style="width: 45px; padding: 1px" value="0"> 
-        </td>
-        <td>Price</td>
-        <td>
-          150.0
-        </td>
-      </tr>
-<tr>
-        <td>Product 2</td>
-        <td>Quantity</td>
-        <td>
-          <input type="number" style="width: 45px; padding: 1px" value="0"> 
-        </td>
-        <td>Price</td>
-        <td>
-          150.0
-        </td>
-      </tr> {% endcomment %}
-    </tbody>
-  </table>
-   <label for="category">Which Employee:</label>
+              <table class="table">
+                <label>Choose Products:</label>
+                <tbody>
+                {% for  product in products  %}
+                  <tr>
+                    <td>{% for  i in images %}
+                      {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                    {% endfor %} </td>
+                    <td>{{product.name}}</td>
+                    <td>Quantity</td>
+                    <td>
+                      <input type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" oninput="myFunction({{products.0.id}},{{products.count}})" min=0>  
+                    </td>
+                    <td>Price/pc:</td>
+                    <td id="price-{{product.id}}">{{product.price}}</td>
+                    <td >Total:</td>
+                    <td id= "total-{{product.id}}">
+                      0
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="form-group">
+              <label for="category">Which Employee:</label>
               <select class="form-control" id="employee" name="employee">
                 {% for  employee in employees  %}
                   <option>{{employee.email}}</option>
                 {% endfor %}
               </select>
-              
-           
-            <div class="m-5 text-center">
-              <button type="submit" id="addProduct" class="btn btn-danger">
-                <b>Add New Order!</b>
-              </button>
+              <div class="m-5 text-center">
+                <button type="submit" id="addProduct" class="btn btn-danger">
+                  <b>Add New Order!</b>
+                </button>
+              </div>
             </div>
           </form>
         </div>
