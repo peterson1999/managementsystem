@@ -19,6 +19,22 @@
 
     <script src="{% static '/js/imageUpload.js' %}"></script>
     <script>
+    function myFunction(g,f) {
+  for (i=g;i< (g+f);i++){
+  console.log(g+f);
+  var k = parseFloat(i);
+  var x1 = "qty-"+k;
+  var y1 = "price-"+k;
+  var z = "total-"+k;
+  var x = document.getElementById(x1).value
+  var a = x;
+  var y=  document.getElementById(y1).innerHTML;
+  var b = parseFloat(y);
+
+  var n = a * b;
+  document.getElementById(z).innerHTML = n;
+  }
+}
 </script>
   </head>
   <body>
@@ -108,13 +124,13 @@
         <td>{{product.name}}</td>
         <td>Quantity</td>
         <td>
-          <input type="number" style="width: 45px; padding: 1px" value="0"> 
+          <input type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" onchange="myFunction({{products.0.id}},{{products.count}})" min=0>  
         </td>
         <td>Price/pc:</td>
-        <td>{{product.price}}</td>
-         <td>Total:</td>
-        <td>
-          150.0
+        <td id="price-{{product.id}}">{{product.price}}</td>
+         <td >Total:</td>
+        <td id= "total-{{product.id}}">
+          0
         </td>
       </tr>
       {% endfor %}
@@ -152,7 +168,7 @@
            
             <div class="m-5 text-center">
               <button type="submit" id="addProduct" class="btn btn-danger">
-                <b>Add New Product!</b>
+                <b>Add New Order!</b>
               </button>
             </div>
           </form>
