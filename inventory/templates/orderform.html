@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static '/dependencies/bootstrap-4.5.2-dist/css/bootstrap.min.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static '/css/register-products.css' %}" />
+
+    <script src="{% static '/dependencies/jquery-3.5.1.min.js' %}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="{% static '/dependencies/bootstrap-4.5.2-dist/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static '/js/imageUpload.js' %}"></script>
+    <script>
+    function myFunction(g,f) {
+    for (i=g;i< (g+f);i++){
+    console.log(g+f);
+    var k = parseFloat(i);
+    var x1 = "qty-"+k;
+    var y1 = "price-"+k;
+    var z = "total-"+k;
+    var x = document.getElementById(x1).value
+    var a = x;
+    var y=  document.getElementById(y1).innerHTML;
+    var b = parseFloat(y);
+
+    var n = a * b;
+    document.getElementById(z).innerHTML = n;
+    }
+  }
+  </script>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <div
+      class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 border-bottom shadow-sm text-white navContainer"
+      role="navigation"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <div class="col-10 col-lg-8">
+          <a class="mr-auto p-0 navbar-brand">
+            <img
+              class="navLogoAlt"
+              src="{% static '/resources/JunJun alt.png' %}"
+            />
+          </a>
+        </div>
+        <div class="col-2 col-lg">
+          <button
+            class="custom-toggler navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="custom-toggler navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="col-2 col-lg-4">
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/main/home"
+                  >Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employee/register">Customers</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/inventory/register-products"
+                  >Products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- /Navigation Bar -->
+    <!-- Registration -->
+    <div class="my-5 text-center">
+      <h1 class="mb-5">Order Form</h1>
+      <div class="container">
+        <div class="col-12 col-md-6 mx-auto pt-2 text-left">
+          <form method="POST" runat="server" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="customer">Choose a Customer:</label>
+              <select class="form-control" id="customer" name="customer">
+                {% for  customer in customers  %}
+                  <option>{{customer.fName}} &nbsp; {{customer.lName}} </option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <table class="table">
+                <label>Choose Products:</label>
+                <tbody>
+                {% for  product in products  %}
+                  <tr>
+                    <td>{% for  i in images %}
+                      {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
+                    {% endfor %} </td>
+                    <td>{{product.name}}</td>
+                    <td>Quantity</td>
+                    <td>
+                      <input type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" oninput="myFunction({{products.0.id}},{{products.count}})" min=0>  
+                    </td>
+                    <td>Price/pc:</td>
+                    <td id="price-{{product.id}}">{{product.price}}</td>
+                    <td >Total:</td>
+                    <td id= "total-{{product.id}}">
+                      0
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="form-group">
+              <label for="category">Which Employee:</label>
+              <select class="form-control" id="employee" name="employee">
+                {% for  employee in employees  %}
+                  <option>{{employee.email}}</option>
+                {% endfor %}
+              </select>
+              <div class="m-5 text-center">
+                <button type="submit" id="addProduct" class="btn btn-danger">
+                  <b>Add New Order!</b>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /Registration -->
+  </body>
+</html>
