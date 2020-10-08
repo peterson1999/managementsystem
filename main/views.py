@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
+from django.contrib import messages
 from datetime import datetime, timedelta
-from django.db.models import Sum
-from employee.models import Customer, Person
+from django.db.models import Sum, Q
+from employee.models import Customer, Person, Employee
 from inventory.models import Product, MultiImage
 from .models import *
-from .forms import CustomerForm
+from .forms import CustomerForm, LoginForm
 from inventory.forms import ProductForm
 # Create your views here.
 
@@ -24,7 +25,22 @@ class LoginView(View):
         return render(request, 'login.html')
 
     def post(self, request):
-        return render(request, 'home.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+            checkEmail = Q(email=email)
+            checkPassword = Q(password=password)
+            match = Employee.objects.filter(checkEmail & checkPassword)
+            if match.count() > 0:
+                return redirect('main:home_view')
+            else:
+                messages.error(request, 'Incorrect email or password.')
+                return redirect('main:login_view')
+        else:
+            messages.error(
+                request, 'Please check if email or password is valid.')
+            return redirect('main:login_view')
 
 
 class HomeView(View):
