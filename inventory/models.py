@@ -37,17 +37,30 @@ class MultiImage(models.Model):
         self.image.delete()
         super().delete(*args, **kwaargs)
 
-# class Order (models.Model):
+class Order (models.Model):
 
-#     customerID = models.ForeignKey(Customer, null=False, blank=False, on_delete=models.CASCADE )
-#     customerFName = models.CharField(max_length=100)
-#     customerLName = models.CharField(max_length=100)
-#     name = models.CharField(max_length=100)
-#     price = models.FloatField(max_length=11)
-#     stock = models.IntegerField()
-#     # image = models.ImageField(upload_to='static/images/', default=None)
+    customerID = models.IntegerField()
+    customerFName = models.CharField(max_length=100)
+    customerLName = models.CharField(max_length=100)
+    employeeEmail = models.CharField(max_length=100)
 
-#     # supplier = models.ForeignKey(Supplier, null=False,blank= False, on_delete =  models.CASCADE, related_name="Supplier", default= 1)
+    class Meta:
+        db_table = "Orders"
+
+class OrderedProducts (models.Model):
+    order_id=models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE )
+    productID = models.IntegerField()
+    price = models.FloatField(max_length=11)
+    qty = models.IntegerField()
+
+    class Meta:
+        db_table = "OrderedProducts"
+
+
+   
+   
+   
+    # supplier = models.ForeignKey(Supplier, null=False,blank= False, on_delete =  models.CASCADE, related_name="Supplier", default= 1)
 
 
 #     class Meta:
