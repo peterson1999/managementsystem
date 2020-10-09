@@ -11,7 +11,7 @@ $(document).ready(function () {
             $('#' + element.id + '-error').removeClass("formError");
         },
         rules: {
-            name: "required",
+            fName: "required",
             lName: "required",
             email: {
                 required: true,
@@ -47,9 +47,34 @@ $(document).ready(function () {
                 max: 300,
                 number: true,
             },
+            elemGrade: {
+                min: 0,
+                max: 100,
+                number: true,
+            },
+            jhsGrade: {
+                min: 0,
+                max: 100,
+                number: true,
+            },
+            shsGrade: {
+                min: 0,
+                max: 100,
+                number: true,
+            },
+            collegeLvl: {
+                min: 0,
+                max: 5,
+                digits: true,
+            },
+            postgradLvl: {
+                min: 0,
+                max: 5,
+                digits: true,
+            },
         },
         messages: {
-            name: "Please enter your first name.",
+            fName: "Please enter your first name.",
             lName: "Please enter your last name.",
             email: {
                 required: "Please enter your email.",
@@ -78,16 +103,11 @@ $(document).ready(function () {
     })
 });
 function formValidate() {
-    if (current == 0) {
-        if ($('#registerForm').valid()) {
-            next();
-        }
-        else {
-            window.scrollTo(0, 0);
-        }
+    if ($('#registerForm').valid()) {
+        next();
     }
     else {
-        next();
+        window.scrollTo(0, 0);
     }
 }
 function next() {
