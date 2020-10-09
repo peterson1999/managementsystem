@@ -21,20 +21,39 @@
     <script>
     function myFunction(g,f) {
     for (i=g;i< (g+f);i++){
-    console.log(g+f);
+    
     var k = parseFloat(i);
     var x1 = "qty-"+k;
     var y1 = "price-"+k;
     var z = "total-"+k;
+    console.log("total-"+k);
     var x = document.getElementById(x1).value
     var a = x;
     var y=  document.getElementById(y1).innerHTML;
     var b = parseFloat(y);
 
     var n = a * b;
-    document.getElementById(z).innerHTML = n;
+    document.getElementById(z).value = n;
+    
     }
-  }
+    var m=0;
+    for (i=g; i<(g+f);i++){
+      var k = parseFloat(i);
+      var z = "total-"+k;
+      var j = parseFloat(document.getElementById(z).value);
+      
+      m+=j;
+      document.getElementById("subtotal").value = m;
+    }
+    {% comment %} var m =0;
+    m+=n;
+    document.getElementById("subtotal").value = m; {% endcomment %}
+
+    
+      
+    
+    }
+  
   </script>
   </head>
   <body>
@@ -94,11 +113,13 @@
             {% csrf_token %}
             <div class="form-group">
               <label for="customer">Choose a Customer:</label>
-              <select class="form-control" id="customer" name="customer">
+                <select class="form-control" id="customer" name ="customerdetails" >
                 {% for  customer in customers  %}
-                  <option>{{customer.fName}} &nbsp; {{customer.lName}} </option>
+                  <option>{{customer.customer_id}} - {{customer.fName}}  {{customer.lName}} </option>
+                  
                 {% endfor %}
               </select>
+              
             </div>
             <div class="form-group">
               <table class="table">
@@ -110,26 +131,50 @@
                       {% if product.id == i.product_id_id and i.image != "" %}<img src='/{{i.image}}' height=30px width= 30px>{% endif %}
                     {% endfor %} </td>
                     <td>{{product.name}}</td>
+                    <td name="productID">{{product.id}}<td>
+                   <input type="text" name="productID" value="{{product.id}}" hidden/>
                     <td>Quantity</td>
                     <td>
-                      <input type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" oninput="myFunction({{products.0.id}},{{products.count}})" min=0>  
+                      <input name="qty" type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" oninput="myFunction({{products.0.id}},{{products.count}})" min=0>  
                     </td>
                     <td>Price/pc:</td>
                     <td id="price-{{product.id}}">{{product.price}}</td>
                     <td >Total:</td>
-                    <td id= "total-{{product.id}}">
-                      0
-                    </td>
+                    <td>
+                    <input id= "total-{{product.id}}"
+                      value="0"
+                      readonly
+                      type="number"
+                      style="width: 45px; padding: 1px" 
+                      name="price"
+                    />
+                    <td>
                   </tr>
                 {% endfor %}
                 </tbody>
               </table>
             </div>
             <div class="form-group">
+              <label for="price">Subtotal:</label>
+              <input
+                class="form-control"
+                type="number"
+                name="subtotal"
+                pattern='[0-9]+(\\.[0-9][0-9]?)?'
+                placeholder=""
+                value="0"
+                id="subtotal"
+                min="0"
+                step="any"
+                required
+                readonly
+              />
+            </div>
+            <div class="form-group">
               <label for="category">Which Employee:</label>
-              <select class="form-control" id="employee" name="employee">
+              <select class="form-control" id="employee" name="employeeEmail">
                 {% for  employee in employees  %}
-                  <option>{{employee.email}}</option>
+                  <option >{{employee.email}}</option>
                 {% endfor %}
               </select>
               <div class="m-5 text-center">
