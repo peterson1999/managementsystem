@@ -71,12 +71,13 @@ class HomeView(View):
                     return HttpResponse("Error in Adding Customer")
             elif 'updateCustomer' in request.POST:
                 customer_id = request.POST.get("id")
+                print(customer_id)
                 customer_fName = request.POST.get("fName")
                 customer_mName = request.POST.get("mName")
                 customer_lName = request.POST.get("lName")
                 customer_bday = request.POST.get("bday")
                 customer_address = request.POST.get("address")
-                update_customer = Customer.objects.filter(person_ptr_id=customer_id).update(
+                update_customer = Person.objects.filter(id=customer_id).update(
                     fName=customer_fName, lName=customer_lName, mName=customer_mName, address=customer_address, birthdate=customer_bday)
             elif 'deleteCustomer' in request.POST:
                 customer_id = request.POST.get("id")
