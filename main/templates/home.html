@@ -112,6 +112,39 @@
           ],
         });
 
+        var oTable = $('#oReportTable').DataTable({
+          dom: 'lfrtip',
+          "drawCallback":function(settings){
+            $('.page-item.active .page-link').css({"background-color":"#dd2a3b","border-color":"#dd2a3b"});
+          },
+          buttons: [
+            {
+              extend: 'collection',
+              text: 'Export',
+              buttons: [
+                  {
+                      extend: 'copy',
+                      text: 'Copy to clipboard'
+                  },
+                  'print',
+                  {
+                      extend: 'excel',
+                      text: 'Export as XLSX'
+                  },
+                  {
+                      extend: 'csv',
+                      text: 'Export as CSV'
+                  },
+                  {
+                      extend: 'pdf',
+                      text: 'Export as PDF'
+                  },
+                  
+              ]
+            }
+          ],
+        });
+
         $('#cStartdate').datepicker({
           changeYear: true,
           changeMonth: true,
@@ -235,17 +268,16 @@
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item active">
-                <a class="nav-link" href="/main/home"
-                  >Home <span class="sr-only">(current)</span></a
-                >
+                <a class="nav-link" href="/main/home">Home </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/employee/register">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/inventory/register-products"
-                  >Products</a
-                >
+                <a class="nav-link" href="/inventory/register-products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/inventory/orderform">Orders</a>
               </li>
             </ul>
           </div>
@@ -629,6 +661,107 @@
       </div>
       {% endfor %}
       <!-- /Product Summary Modals -->
+
+      <!-- Order Summary -->
+      <div class="container card shadow-lg bg-white rounded px-0 my-5">
+        <div class="card-header">
+          <h4 class="text-left align-self-center">Order Summary</h4>
+        </div>
+        <div class="col-12 mx-auto table-responsive card-body px-2 pt-0 pb-1">
+          <table class="display table table-hover table-striped text-center mx-auto" id="oReportTable">
+            <div class="table-header row col-md-12 mx-0 my-2 p-0">
+              <div class="col-md-6 col-lg-6 col-sm-12 actions" id="actions">
+              
+              </div>
+              <div class="input-group input-daterange col-md-6 col-lg-6 col-sm-12 pr-0">
+              </div>
+            </div>
+            <thead>
+              <tr>
+                <td><b>Customer Name</b></td>
+                <td><b>Employee Name</b></td>
+                <td><b>Date Purchased</b></td>
+                <td><b>Total</b></td>
+                <td><b>Action</b></td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+              <tr>
+                <td>{{order.customerName}}</td>
+                <td>{{order.employeeName}}</td>
+                <td>{{order.dateOrdered}}</td>
+                <td>₱{{order.total|floatformat:2}}</td>
+                <td><a href="#" data-toggle="modal" data-target="#orderView-{{order.id}}">View</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- /Order Summary -->
+      <!-- Order View Modal -->
+      {% for order in orders %}
+      <div class="modal fade" id="orderView-{{order.id}}" tabindex="-1" role="dialog" aria-labelledby="orderViewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header action-modal">
+              <h5 class="modal-title" id="customerViewTitle">Order Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="updateCustomer" method="POST">
+            {% csrf_token %}
+              <div class="modal-body container px-4">
+                <div class="row">
+                  <div class="col-4">
+                    <p><b>Customer Name:</b></p>
+                    <p><b>Employee Name:</b></p>
+                    <p><b>Date Purchased:</b></p>
+                  </div>
+                  <div class="col-8">
+                    <p><b>{{order.customerName}}</b></p>
+                    <p><b>{{order.employeeName}}</b></p>
+                    <p><b>{{order.dateOrdered}}</b></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <table class="display table table-hover table-bordered text-center mx-auto">
+                    <thead>
+                      <tr>
+                        <td><b>Description</b></td>
+                        <td><b>Qty</b></td>
+                        <td><b>Unit Price</b></td>
+                        <td><b>Total</b></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in order.items %}
+                        <tr>
+                          <td><b>{{item.productName}}</b></td>
+                          <td><b>{{item.productQty}}</b></td>
+                          <td><b>₱{{item.productPrice|floatformat:2}}</b></td>
+                          <td><b>₱{{item.productSubtotal|floatformat:2}}</b></td>
+                        </tr>
+                      {% endfor %}
+                      <tr>
+                        <td colspan="3"><b>Grand Total</b></td>
+                        <td><b>₱{{order.total|floatformat:2}}</b></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- /Order View Modal -->
     </main>
     <!-- /Main Content -->
   </body>
