@@ -57,39 +57,28 @@ class OrderFormView(View):
             'employees':employees
          }
         return render(request, 'orderform.html', context)
+        
     def post(self, request):
         form = OrderForm(request.POST)
         form1 = OrderedProduct(request.POST)
 
-        # if (form.is_valid() and form1.is_valid()):
-        customerdetails= request.POST.get("customerdetails")
-        
-        customerID = int (customerdetails.split(' ',1)[0]) 
-        
-        
-        employeeEmail = request.POST.get("employeeEmail")
-        
-        
-        form = Order(customerID=customerID, employeeEmail=employeeEmail)
+        if (form.is_valid() and form1.is_valid()):
+            customerdetails= request.POST.get("customerdetails")
+            customerID = int (customerdetails.split(' ',1)[0])
+            employeeEmail = request.POST.get("employeeEmail")
+            
+            form = Order(customerID=customerID, employeeEmail=employeeEmail)
+            form.save()
 
-        form.save()
-        print("Dasdasdasda")
-        productID = request.POST.getlist("productID")
-        price = request.POST.getlist("price")
-        qty = request.POST.getlist("qty")
-        # for p in productID:
-        #     form1 = OrderedProducts(productID=p,  order_id=form)
-        # for s in price:
-        #     form1 = OrderedProducts(price=s, order_id=form)
-        # for q in qty:
-        #     form1 = OrderedProducts(qty=q, order_id=form)
-        #     form1.save()
-        for i in range(len(productID)):
-            if (qty[i]!='0'):
-                form1 = OrderedProducts(productID=productID[i], price=price[i],qty=qty[i],order_id=form)
-                form1.save()
-        return redirect('main:home_view')
+            productID = request.POST.getlist("productID")
+            price = request.POST.getlist("price")
+            qty = request.POST.getlist("qty")
+            for i in range(len(productID)):
+                if (qty[i]!='0'):
+                    form1 = OrderedProducts(productID=productID[i], price=price[i],qty=qty[i],order_id=form)
+                    form1.save()
+            return redirect('main:home_view')
 
-        # else:
-        #     print(form.errors)
-        #     return HttpResponse('not valid')
+        else:
+            print(form.errors)
+            return HttpResponse('not valid')
