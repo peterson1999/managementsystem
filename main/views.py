@@ -3,8 +3,8 @@ from django.views.generic import View
 from django.http import HttpResponse
 from datetime import datetime, timedelta
 from django.db.models import Sum
-from employee.models import Customer, Person
-from inventory.models import Product, MultiImage
+from employee.models import Customer, Person, Employee
+from inventory.models import Product, MultiImage, Order, OrderedProducts
 from .models import *
 from .forms import CustomerForm
 from inventory.forms import ProductForm
@@ -32,18 +32,44 @@ class HomeView(View):
         customers = Customer.objects.all()
         products = Product.objects.all()
         images = MultiImage.objects.all()
+        orders = Order.objects.all()
+
+        employees = Employee.objects.all()
         items = products.count()
         enddate = datetime.today()
         startdate = enddate - timedelta(days=6)
-        purchase = Customer.objects.filter(
-            regdate__range=[startdate, enddate]).count()
+        purchase = Order.objects.filter(
+            dateOrdered__range=[startdate, enddate]).count()
         qty = Product.objects.aggregate(Sum('stock'))
         value = Product.objects.aggregate(Sum('price'))
-
+        orderContext = []
+        for order in orders:
+            o = {'dateOrdered': order.dateOrdered, 'id': order.id}
+            for customer in customers:
+                if customer.customer_id == order.customerID:
+                    o['customerName'] = customer.fName + " " + customer.lName
+                    break
+            for employee in employees:
+                if employee.email == order.employeeEmail:
+                    o['employeeName'] = employee.fName+" "+employee.lName
+                    break
+            total = 0
+            orderedItems = []
+            orderedProducts = OrderedProducts.objects.filter(order_id=order.id)
+            for orderItem in orderedProducts:
+                prod = Product.objects.get(id=orderItem.productID)
+                p = {'productID': orderItem.productID, 'productName': prod.name, 'productPrice': prod.price,
+                     'productQty': orderItem.qty, 'productSubtotal': orderItem.price}
+                total += orderItem.price
+                orderedItems.append(p)
+            o['items'] = orderedItems
+            o['total'] = total
+            orderContext.append(o.copy())
         context = {
             'customers': customers,
             'products': products,
             'images': images,
+            'orders': orderContext,
             'item_summary': items,
             'purchase_summary': purchase,
             'qty_summary': qty,
