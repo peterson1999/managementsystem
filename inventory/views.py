@@ -73,8 +73,12 @@ class OrderFormView(View):
             productID = request.POST.getlist("productID")
             price = request.POST.getlist("price")
             qty = request.POST.getlist("qty")
+            stock = request.POST.getlist("stock")
             for i in range(len(productID)):
                 if (qty[i]!='0'):
+                    # update_stock = Product.objects.filter(id=productID[i]).stock
+                    substock =  (int(stock[i])-int(qty[i]))
+                    update_stock = Product.objects.filter(id=productID[i]).update(stock=substock)
                     form1 = OrderedProducts(productID=productID[i], price=price[i],qty=qty[i],order_id=form)
                     form1.save()
             return redirect('main:home_view')

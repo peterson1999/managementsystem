@@ -48,6 +48,7 @@
     {% comment %} var m =0;
     m+=n;
     document.getElementById("subtotal").value = m; {% endcomment %}
+  
 
     
       
@@ -138,6 +139,10 @@
                     <td>
                       <input name="qty" type="number" id="qty-{{product.id}}" style="width: 45px; padding: 1px" value="0" oninput="myFunction({{products.0.id}},{{products.count}})" min=0>  
                     </td>
+                  
+                     
+                      <input hidden readonly name="stock" type="number" id="stock-{{product.id}}" style="width: 45px; padding: 1px" value="{{product.stock}}">  
+                    
                     <td>Price/pc:</td>
                     <td id="price-{{product.id}}">{{product.price}}</td>
                     <td >Total:</td>
