@@ -176,7 +176,9 @@ class HomeView(View):
                 print('profile updated')
             elif 'btnDelete' in request.POST:
                 print('delete button clicked')
+                form = ProductForm(request.POST)
                 product_id = request.POST.get("id")
-                stud = Product.objects.filter(id=product_id).delete()
+                update_stock = Product.objects.filter(id=product_id).update(isDeleted=True)
+                # stud = Product.objects.filter(id=product_id).delete()
                 print('recorded deleted')
         return redirect('main:home_view')
