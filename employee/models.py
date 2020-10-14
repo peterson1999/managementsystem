@@ -9,6 +9,7 @@ class Person(models.Model):
     mName = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     birthdate = models.DateField()
+    isDeleted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "Person"

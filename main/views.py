@@ -45,7 +45,7 @@ class LoginView(View):
 
 class HomeView(View):
     def get(self, request):
-        customers = Customer.objects.all()
+        customers = Customer.objects.filter(isDeleted=False)
         products = Product.objects.all()
         images = MultiImage.objects.all()
         orders = Order.objects.all()
@@ -123,9 +123,11 @@ class HomeView(View):
                     fName=customer_fName, lName=customer_lName, mName=customer_mName, address=customer_address, birthdate=customer_bday)
             elif 'deleteCustomer' in request.POST:
                 customer_id = request.POST.get("id")
-                delete_customer = Customer.objects.filter(
-                    person_ptr_id=customer_id).delete()
-                delete_person = Person.objects.filter(id=customer_id).delete()
+                # delete_customer = Customer.objects.filter(
+                #    person_ptr_id=customer_id).delete()
+                delete_person = Person.objects.filter(
+                    id=customer_id).update(isDeleted=True)
+                #delete_person = Person.objects.filter(id=customer_id).delete()
 
             # Product
             elif 'btnUpdate' in request.POST:
@@ -178,7 +180,8 @@ class HomeView(View):
                 print('delete button clicked')
                 form = ProductForm(request.POST)
                 product_id = request.POST.get("id")
-                update_stock = Product.objects.filter(id=product_id).update(isDeleted=True)
+                update_stock = Product.objects.filter(
+                    id=product_id).update(isDeleted=True)
                 # stud = Product.objects.filter(id=product_id).delete()
                 print('recorded deleted')
         return redirect('main:home_view')
