@@ -541,6 +541,7 @@
             </thead>
             <tbody>
              {% for product in products  %} 
+              {% if product.isDeleted == False %}
               <tr>
                 <td>{{product.regdate}}</td>
                 <td>{{product.category}}</td>
@@ -550,6 +551,7 @@
                 <td>{{product.stock}}</td>
                 <td><a href="#" data-toggle="modal" data-target="#productView-{{product.id}}">View</a> | <a href="#" data-toggle="modal" data-target="#productDelete-{{product.id}}">Delete</a></td>
               </tr>
+              {% endif %}
               {% endfor %}
             </tbody>
           </table>
@@ -558,6 +560,7 @@
 
       <!--Product Actions Modals-->
       {% for  product in products  %}
+     
       <div class="modal fade" id="productView-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="productViewTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -659,6 +662,7 @@
           </form>
         </div>
       </div>
+ 
       {% endfor %}
       <!-- /Product Summary Modals -->
 
