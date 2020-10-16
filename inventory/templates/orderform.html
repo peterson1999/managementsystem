@@ -26,8 +26,13 @@
     var x1 = "qty-"+k;
     var y1 = "price-"+k;
     var z = "total-"+k;
-    console.log("total-"+k);
-    var x = document.getElementById(x1).value
+    var item = document.getElementById(x1);
+    if (item== null){
+      console.log(x1);
+      f++;
+      continue;
+    }
+    var x = document.getElementById(x1).value;
     var a = x;
     var y=  document.getElementById(y1).innerHTML;
     var b = parseFloat(y);
@@ -38,9 +43,17 @@
     }
     var m=0;
     for (i=g; i<(g+f);i++){
+      
       var k = parseFloat(i);
       var z = "total-"+k;
-      var j = parseFloat(document.getElementById(z).value);
+      
+      var item = document.getElementById(z);
+      var j=0;
+      if (item != null){
+        j = parseFloat(document.getElementById(z).value);
+      }
+  
+      
       
       m+=j;
       document.getElementById("subtotal").value = m;
