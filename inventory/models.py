@@ -18,6 +18,7 @@ class Product (models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField(max_length=11)
     stock = models.IntegerField()
+    isDeleted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "Product"
@@ -40,6 +41,7 @@ class Order (models.Model):
     customerID = models.IntegerField()
     employeeEmail = models.CharField(max_length=100)
     dateOrdered = models.DateField(default=timezone.now)
+    isDeleted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "Orders"
